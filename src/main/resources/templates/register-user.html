@@ -6,15 +6,22 @@
 </head>
 <body>
 <div class="container-fluid">
-    <main class="main" style="height:80vh; background-size: 100% auto ;background-position: bottom; background-repeat: no-repeat;">
+    <main class="register-main" style="height:80vh; background-size: 100% auto ;background-position: bottom; background-repeat: no-repeat;">
         <div>
             <th:block th:include="~{/fragments/nav-bar}"></th:block>
         </div>
-            <hr class="mt-6">
+        <hr class="mt-6">
         <div class="row" >
-            <div class="col-sm-6">
-                <h1 class="ml-4 display-4 text-white mb-6">Добре дошли!</h1>
-                <p class="ml-4 text-white">Ние се грижим за вашето бъдеще!</p>
+            <div class="col-sm-4">
+                <label class="form-group font-weight-bold text-white mt-4">Лични данни:</label>
+                <form>
+                    <div class="form-group text-xl-center font-weight-bold text-white mt-4">
+                        <input type="email" class="form-control transparent-input "style="border:2px solid white" id="fullName" placeholder="Моля въведете вашето име..">
+                    </div>
+                    <div class="form-group text-xl-center font-weight-bold text-white mt-4">
+
+                        <input type="password" class="form-control transparent-input "style="border:2px solid white"  id="exampleInputPassword1" placeholder="Моля въведете вашата парола..">
+                    </div>
             </div>
             <div class="col-sm-4 mt-4" style="border:3px solid white">
                 <label class="form-group font-weight-bold text-white mt-4">Влезте във вашия профил:</label>
@@ -27,7 +34,7 @@
                         <input type="password" class="form-control transparent-input "style="border:2px solid white"  id="exampleInputPassword1" placeholder="Моля въведете вашата парола..">
                     </div>
                     <div class="col text-center mb-4 mt-4">
-                    <button type="submit" class="btn btn-outline-light my-2 my-sm-0">Вход</button>
+                        <button type="submit" class="btn btn-outline-light my-2 my-sm-0">Вход</button>
                     </div>
                 </form>
             </div>

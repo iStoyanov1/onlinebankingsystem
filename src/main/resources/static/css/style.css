@@ -1,3 +1,12 @@
-.re-background{
-    background-color: #900C45;
+.main {
+    background-image: url(https://cff-cav56vrdcl.netdna-ssl.com/wp-content/uploads/2017/05/Family-Cutout_Heart_Fotolia_101077810.jpg);
+}
+.transparent-input{
+    background-color:transparent !important;
+}
+::placeholder{
+    color: white;
+}
+.register-main{
+    background-image: url("../img/family-2 (1).jpg");
 }

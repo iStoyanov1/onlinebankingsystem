@@ -53,7 +53,7 @@ public class Bills extends BaseEntity {
         this.amount = amount;
     }
 
-    @ManyToMany
+    @ManyToOne
     public User getUser() {
         return user;
     }
