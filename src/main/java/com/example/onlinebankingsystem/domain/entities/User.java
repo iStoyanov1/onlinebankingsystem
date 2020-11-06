@@ -16,6 +16,7 @@ public class User extends BaseEntity {
     private String phone;
     private String country;
     private String city;
+    private String egn;
     private List<BankAccount> bankAccount;
     private List<Bills> bills;
 
@@ -74,6 +75,15 @@ public class User extends BaseEntity {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Column(name = "personal_id")
+    public String getEgn() {
+        return egn;
+    }
+
+    public void setEgn(String egn) {
+        this.egn = egn;
     }
 
     @OneToMany(mappedBy = "user")

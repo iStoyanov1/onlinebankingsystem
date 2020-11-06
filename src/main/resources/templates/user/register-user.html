@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <main class="register-main" style="height:80vh; background-size: 100% auto; background-repeat: no-repeat;">
+        <div>
+            <th:block th:include="~{/fragments/nav-bar}"></th:block>
+        </div>
+        <hr class="hr-2 bg-light">
+        <h1 class="text-center text-light mt-4">Регистрация</h1>
+        <div class="container">
+            <form th:action="@{/user/register}" th:method="post">
+            <div class="row justify-content-md-center">
+                <div class="col-md-5 col-md-offset-3 ml-4">
+                    <div class="form-group">
+                        <label for="name" class="font-weight-bold">Име:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Име..." name="fullName">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="font-weight-bold">Имейл:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Имейл..." name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="font-weight-bold">Парола</label>
+                        <input type="password" class="form-control" id="password" placeholder="Парола..."
+                               name="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword" class="font-weight-bold">Потвърдете паролата:</label>
+                        <input type="password" class="form-control" id="confirmPassword"
+                               placeholder="Потвърдете паролата..." name="confirmPassword">
+                    </div>
+                </div>
+                <div class="col-md-5 mr-4">
+                    <div class="form-group">
+                        <label for="egn" class="font-weight-bold">ЕГН:</label>
+                        <input type="text" class="form-control" id="egn" placeholder="ЕГН..." name="egn">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="font-weight-bold">Телефон:</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Телефон..." name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="country" class="font-weight-bold">Държава:</label>
+                        <input type="text" class="form-control" id="country" placeholder="Държава..." name="country">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="city" class="font-weight-bold">Град:</label>
+                        <input type="text" class="form-control" id="city" placeholder="Град..." name="city">
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-light">
+
+                <div class="button-holder d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success">Потвърди</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+</body>
+</html>

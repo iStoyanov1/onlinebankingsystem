@@ -1,7 +1,7 @@
 package com.example.onlinebankingsystem.services;
 
 import com.example.onlinebankingsystem.domain.entities.User;
-import com.example.onlinebankingsystem.domain.services.UserServiceModel;
+import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
 import com.example.onlinebankingsystem.repositories.UserRepository;
 import com.example.onlinebankingsystem.services.interfaces.UserService;
 import org.modelmapper.ModelMapper;
@@ -19,16 +19,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean registerUser(UserServiceModel userServiceModel) {
+    public UserServiceModel registerUser(UserServiceModel userServiceModel) {
         User user = this.modelMapper.map(userServiceModel, User.class);
 
-        try {
-            this.userRepository.save(user);
-        } catch (Exception e) {
-            return false;
-        }
-
-        return true;
+        return this.modelMapper.map(this.userRepository.saveAndFlush(user), UserServiceModel.class);
     }
 
     @Override

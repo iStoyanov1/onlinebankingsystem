@@ -1,10 +1,10 @@
 package com.example.onlinebankingsystem.services.interfaces;
 
-import com.example.onlinebankingsystem.domain.services.UserServiceModel;
+import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
 
 public interface UserService {
 
-    boolean registerUser(UserServiceModel userServiceModel);
+    UserServiceModel registerUser(UserServiceModel userServiceModel);
 
     UserServiceModel findUserByEmail(String email);
 

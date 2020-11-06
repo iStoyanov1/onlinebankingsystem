@@ -1,26 +1,39 @@
-package com.example.onlinebankingsystem.domain.services;
-
-import com.example.onlinebankingsystem.domain.entities.BankAccount;
-import com.example.onlinebankingsystem.domain.entities.Bills;
+package com.example.onlinebankingsystem.domain.models.services;
 
 import java.util.List;
 
 public class UserServiceModel {
 
     private int id;
+    private String fullName;
     private String email;
     private String password;
+    private String egn;
     private String phone;
     private String country;
     private String city;
-    private List<BankAccountServiceModel> bankAccount;
-    private List<BillsServiceModel> bills;
 
     public UserServiceModel() {
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getEgn() {
+        return egn;
+    }
+
+    public void setEgn(String egn) {
+        this.egn = egn;
     }
 
     public void setId(int id) {
@@ -67,19 +80,4 @@ public class UserServiceModel {
         this.city = city;
     }
 
-    public List<BankAccountServiceModel> getBankAccount() {
-        return bankAccount;
-    }
-
-    public void setBankAccount(List<BankAccountServiceModel> bankAccount) {
-        this.bankAccount = bankAccount;
-    }
-
-    public List<BillsServiceModel> getBills() {
-        return bills;
-    }
-
-    public void setBills(List<BillsServiceModel> bills) {
-        this.bills = bills;
-    }
 }

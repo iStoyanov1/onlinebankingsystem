@@ -6,31 +6,37 @@
 </head>
 <body>
 <div class="container-fluid">
-    <main class="main" style="height:80vh; background-size: 100% auto ;background-position: bottom; background-repeat: no-repeat;">
+    <main class="main"
+          style="height:80vh; background-size: 100% auto ;background-position: bottom; background-repeat: no-repeat;">
         <div>
             <th:block th:include="~{/fragments/nav-bar}"></th:block>
         </div>
-            <hr class="mt-6">
-        <div class="row" >
+        <hr class="mt-6">
+        <div class="row">
             <div class="col-sm-6">
                 <h1 class="ml-4 display-4 text-white mb-6">Добре дошли!</h1>
                 <p class="ml-4 text-white">Ние се грижим за вашето бъдеще!</p>
             </div>
-            <div class="col-sm-4 mt-4" style="border:3px solid white">
-                <label class="form-group font-weight-bold text-white mt-4">Влезте във вашия профил:</label>
-                <form>
-                    <div class="form-group text-xl-center font-weight-bold text-white mt-4">
-                        <input type="email" class="form-control transparent-input "style="border:2px solid white" id="exampleInputEmail1" placeholder="Моля въведете вашият имейл..">
-                    </div>
-                    <div class="form-group text-xl-center font-weight-bold text-white mt-4">
+                <div class="col-sm-4 mt-4" style="border:3px solid white">
+                    <form th:action="@{/}" th:method="post">
+                    <label class="form-group font-weight-bold text-white mt-4">Влезте във вашия профил:</label>
+                        <div class="form-group text-xl-center font-weight-bold text-white mt-4">
+                            <label for="email" class="font-weight-bold">Имейл:</label>
+                            <input type="email" class="form-control transparent-input " style="border:2px solid white"
+                                   id="email" placeholder="Моля въведете вашият имейл.." name="email">
+                        </div>
+                        <div class="form-group text-xl-center font-weight-bold text-white mt-4">
+                            <label for="password" class="font-weight-bold">Парола:</label>
+                            <input type="password" class="form-control transparent-input "
+                                   style="border:2px solid white" id="password"
+                                   placeholder="Моля въведете вашата парола.." name="password">
+                        </div>
+                        <div class="col text-center mb-4 mt-4">
+                            <button type="submit" class="btn btn-outline-light my-2 my-sm-0">Вход</button>
+                        </div>
+                    </form>
+                </div>
 
-                        <input type="password" class="form-control transparent-input "style="border:2px solid white"  id="exampleInputPassword1" placeholder="Моля въведете вашата парола..">
-                    </div>
-                    <div class="col text-center mb-4 mt-4">
-                    <button type="submit" class="btn btn-outline-light my-2 my-sm-0">Вход</button>
-                    </div>
-                </form>
-            </div>
         </div>
     </main>
 </div>
