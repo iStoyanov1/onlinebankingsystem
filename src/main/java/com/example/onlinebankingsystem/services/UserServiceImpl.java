@@ -19,19 +19,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserServiceModel registerUser(UserServiceModel userServiceModel) {
-        User user = this.modelMapper.map(userServiceModel, User.class);
-
-        return this.modelMapper.map(this.userRepository.saveAndFlush(user), UserServiceModel.class);
-    }
-
-    @Override
-    public UserServiceModel findUserByEmail(String email) {
-        return this.modelMapper.map(this.userRepository.findByEmail(email),
-                UserServiceModel.class);
-    }
-
-    @Override
     public boolean loginUser(UserServiceModel userServiceModel) {
         if (this.userRepository.findByEmailAndPassword(userServiceModel.getEmail(), userServiceModel.getPassword()) != null) {
             return true;

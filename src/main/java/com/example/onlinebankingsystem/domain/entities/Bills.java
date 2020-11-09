@@ -1,64 +1,65 @@
 package com.example.onlinebankingsystem.domain.entities;
 
 import com.example.onlinebankingsystem.domain.base.BaseEntity;
-import com.example.onlinebankingsystem.domain.enums.BillStatus;
+import com.example.onlinebankingsystem.domain.enums.BillType;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity(name = "bills")
 public class Bills extends BaseEntity {
 
-    private String name;
-    private String type;
-    private BillStatus status;
-    private double amount;
-    private User user;
+   private BillType type;
+   private String supplier;
+   private Date date;
+   private double quantity;
+   private BankAccount account;
 
-    public Bills() {
-    }
+   public Bills() {
+   }
 
-    @Column(name = "name")
-    public String getName() {
-        return name;
-    }
+   @Column(name = "type")
+   public BillType getType() {
+      return type;
+   }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+   public void setType(BillType type) {
+      this.type = type;
+   }
 
-    @Column(name = "type")
-    public String getType() {
-        return type;
-    }
+   @Column(name = "supplier")
+   public String getSupplier() {
+      return supplier;
+   }
 
-    public void setType(String type) {
-        this.type = type;
-    }
+   public void setSupplier(String supplier) {
+      this.supplier = supplier;
+   }
 
-    @Column(name = "status")
-    @Enumerated(EnumType.STRING)
-    public BillStatus getStatus() {
-        return status;
-    }
+   @Column(name = "date")
+   public Date getDate() {
+      return date;
+   }
 
-    public void setStatus(BillStatus status) {
-        this.status = status;
-    }
-    @Column(name = "amount")
-    public double getAmount() {
-        return amount;
-    }
+   public void setDate(Date date) {
+      this.date = date;
+   }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
+   @Column(name = "quantity")
+   public double getQuantity() {
+      return quantity;
+   }
 
-    @ManyToOne
-    public User getUser() {
-        return user;
-    }
+   public void setQuantity(double quantity) {
+      this.quantity = quantity;
+   }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+   @ManyToOne
+   public BankAccount getAccount() {
+      return account;
+   }
+
+   public void setAccount(BankAccount account) {
+      this.account = account;
+   }
 }

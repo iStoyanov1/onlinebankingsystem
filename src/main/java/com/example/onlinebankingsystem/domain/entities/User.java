@@ -16,9 +16,7 @@ public class User extends BaseEntity {
     private String phone;
     private String country;
     private String city;
-    private String egn;
-    private List<BankAccount> bankAccount;
-    private List<Bills> bills;
+    private String pin;
 
     public User() {
     }
@@ -77,30 +75,14 @@ public class User extends BaseEntity {
         this.city = city;
     }
 
-    @Column(name = "personal_id")
-    public String getEgn() {
-        return egn;
+    @Column(name = "pin")
+    public String getPin() {
+        return pin;
     }
 
-    public void setEgn(String egn) {
-        this.egn = egn;
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 
-    @OneToMany(mappedBy = "user")
-    public List<BankAccount> getBankAccount() {
-        return bankAccount;
-    }
 
-    public void setBankAccount(List<BankAccount> bankAccount) {
-        this.bankAccount = bankAccount;
-    }
-
-    @OneToMany(mappedBy = "user")
-    public List<Bills> getBills() {
-        return bills;
-    }
-
-    public void setBills(List<Bills> bills) {
-        this.bills = bills;
-    }
 }

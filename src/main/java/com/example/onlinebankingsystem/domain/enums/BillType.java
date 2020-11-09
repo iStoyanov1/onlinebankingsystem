@@ -1,6 +1,6 @@
 package com.example.onlinebankingsystem.domain.enums;
 
-public enum BillStatus {
+public enum BillType {
 
     PAID, PENDING
 }

@@ -1,6 +1,5 @@
 package com.example.onlinebankingsystem.web.controllers;
 
-import com.example.onlinebankingsystem.domain.models.binding.UserRegisterBindingModel;
 import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
 import com.example.onlinebankingsystem.services.interfaces.UserService;
 import org.modelmapper.ModelMapper;
