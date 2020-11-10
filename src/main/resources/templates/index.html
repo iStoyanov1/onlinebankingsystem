@@ -18,12 +18,13 @@
                 <p class="ml-4 text-white">Ние се грижим за вашето бъдеще!</p>
             </div>
                 <div class="col-sm-4 mt-4" style="border:3px solid white">
-                    <form th:action="@{/}" th:method="post">
+                    <form th:action="@{/}" th:method="post" >
+                        <input type="hidden" name="_csrf" value="c95ccb2b-1afa-47bd-bf7b-a5b72739470b">
                     <label class="form-group font-weight-bold text-white mt-4">Влезте във вашия профил:</label>
                         <div class="form-group text-xl-center font-weight-bold text-white mt-4">
-                            <label for="email" class="font-weight-bold">Имейл:</label>
-                            <input type="email" class="form-control transparent-input " style="border:2px solid white"
-                                   id="email" placeholder="Моля въведете вашият имейл.." name="email">
+                            <label for="username" class="font-weight-bold">Имейл:</label>
+                            <input type="text" class="form-control transparent-input " style="border:2px solid white"
+                                   id="username" placeholder="Моля въведете вашият имейл.." name="username">
                         </div>
                         <div class="form-group text-xl-center font-weight-bold text-white mt-4">
                             <label for="password" class="font-weight-bold">Парола:</label>
@@ -36,7 +37,6 @@
                         </div>
                     </form>
                 </div>
-
         </div>
     </main>
 </div>

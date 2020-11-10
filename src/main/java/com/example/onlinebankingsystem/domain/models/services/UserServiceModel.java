@@ -5,10 +5,11 @@ import java.util.List;
 public class UserServiceModel {
 
     private int id;
+    private String username;
     private String fullName;
     private String email;
     private String password;
-    private String egn;
+    private String pin;
     private String phone;
     private String country;
     private String city;
@@ -20,6 +21,14 @@ public class UserServiceModel {
         return id;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getFullName() {
         return fullName;
     }
@@ -28,12 +37,12 @@ public class UserServiceModel {
         this.fullName = fullName;
     }
 
-    public String getEgn() {
-        return egn;
+    public String getPin() {
+        return pin;
     }
 
-    public void setEgn(String egn) {
-        this.egn = egn;
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 
     public void setId(int id) {

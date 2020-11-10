@@ -4,6 +4,7 @@ import com.example.onlinebankingsystem.domain.models.binding.UserLoginBindingMod
 import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
 import com.example.onlinebankingsystem.services.interfaces.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,21 +23,11 @@ public class HomeController {
     }
 
     @GetMapping("/")
+    @PreAuthorize("isAnonymous()")
     public ModelAndView homeView(ModelAndView modelAndView){
         modelAndView.setViewName("index");
         return modelAndView;
     }
 
-    @PostMapping("/")
-    public ModelAndView login(@ModelAttribute UserLoginBindingModel userLoginBindingModel, ModelAndView modelAndView){
-        UserServiceModel userServiceModel = this.modelMapper.map(userLoginBindingModel, UserServiceModel.class);
 
-        if (!this.userService.loginUser(userServiceModel)){
-            modelAndView.setViewName("redirect:/");
-            return modelAndView;
-        }else{
-            modelAndView.setViewName("user-home");
-            return modelAndView;
-        }
-    }
 }

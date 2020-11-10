@@ -5,6 +5,8 @@ import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
 import com.example.onlinebankingsystem.repositories.UserRepository;
 import com.example.onlinebankingsystem.services.interfaces.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,13 +21,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean loginUser(UserServiceModel userServiceModel) {
-        if (this.userRepository.findByEmailAndPassword(userServiceModel.getEmail(), userServiceModel.getPassword()) != null) {
-            return true;
-        }
-
-        return false;
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return this.userRepository.findUserByUsername(username);
     }
-
-
 }

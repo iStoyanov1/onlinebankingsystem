@@ -65,7 +65,7 @@ public class Transaction extends BaseEntity {
         this.sender = sender;
     }
 
-    @OneToOne
+    @OneToOne(mappedBy = "")
     public BankAccount getRecipient() {
         return recipient;
     }
