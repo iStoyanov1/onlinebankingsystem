@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <main>
+        <div>
+            <th:block th:include="~{/fragments/nav-bar}"></th:block>
+        </div>
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <nav class="navbar navbar-expand-md navbar-light bg-light"
+                     style="border-bottom-left-radius: 30px; border:solid 2px; border-color: #e3f2fd;border-bottom-right-radius: 30px">
+                    <a class="navbar-brand" href="#">Профил</a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav-fill w-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Сметки <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Карти</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Транзакции <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item dropdown active">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Редактиране на профил
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Потребителско име</a>
+                                    <a class="dropdown-item" href="#">Парола</a>
+                                    <a class="dropdown-item" href="#">Имейл</a>
+                                    <a class="dropdown-item" href="#">Телефон</a>
+                                </div>
+                        </ul>
+                        <form action="/logout?login" method="post">
+                            <button class="btn btn-danger logout-button" style="border-radius: 50px">Изход</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row mt-4">
+                <div class="col-sm-4 mr-4">
+                    <img src="https://www.searchpng.com/wp-content/uploads/2019/02/Profile-PNG-Icon.png" height="350"
+                         width="350">
+                </div>
+                <div class="col-sm-6 mt-4">
+                    <table class="table table-striped table-light">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row" style="text-align: center">Име:</th>
+                            <td><h5 th:text="${user.username}"></h5></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row" style="text-align: center">Имейл:</th>
+                            <td><h5 th:text="${user.email}"></h5></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" style="text-align: center">Телефон:</th>
+                            <td><h5 th:text="${user.phone}"></h5></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

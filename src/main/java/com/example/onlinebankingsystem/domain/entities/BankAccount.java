@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity(name = "bank_account")
 public class BankAccount extends BaseEntity {
 
-    private String cardNumber;
+    private String accountNumber;
     private AccountCurrency currency;
     private double balance;
     private User user;
@@ -17,13 +17,13 @@ public class BankAccount extends BaseEntity {
     public BankAccount() {
     }
 
-    @Column(name = "card_number")
-    public String getCardNumber() {
-        return cardNumber;
+    @Column(name = "account_number")
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     @Column(name = "balance")

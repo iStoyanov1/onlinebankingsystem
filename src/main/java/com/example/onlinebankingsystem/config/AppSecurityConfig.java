@@ -26,7 +26,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/user/home")
+                .defaultSuccessUrl("/user/profile")
                 .and()
                 .logout()
                 .logoutSuccessUrl("/");

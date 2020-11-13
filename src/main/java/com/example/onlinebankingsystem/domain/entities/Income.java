@@ -1,33 +1,24 @@
 package com.example.onlinebankingsystem.domain.entities;
 
 import com.example.onlinebankingsystem.domain.base.BaseEntity;
-import com.example.onlinebankingsystem.domain.enums.TransactionType;
+
 
 import javax.persistence.*;
 import java.sql.Date;
 
-@Entity(name = "transactions")
-public class Transaction extends BaseEntity {
+@Entity(name = "income")
+public class Income extends BaseEntity {
 
-    private TransactionType transactionType;
+
     private Date date;
     private double quantity;
     private String details;
-    private BankAccount sender;
+    private String sender;
     private BankAccount recipient;
 
-    public Transaction() {
+    public Income() {
     }
 
-    @Column(name = "type")
-    @Enumerated(EnumType.STRING)
-    public TransactionType getTransactionType() {
-        return transactionType;
-    }
-
-    public void setTransactionType(TransactionType transactionType) {
-        this.transactionType = transactionType;
-    }
 
     @Column(name = "date")
     public Date getDate() {
@@ -56,16 +47,16 @@ public class Transaction extends BaseEntity {
         this.details = details;
     }
 
-    @OneToOne
-    public BankAccount getSender() {
+    @Column(name = "sender")
+    public String getSender() {
         return sender;
     }
 
-    public void setSender(BankAccount sender) {
+    public void setSender(String sender) {
         this.sender = sender;
     }
 
-    @OneToOne(mappedBy = "")
+    @OneToOne
     public BankAccount getRecipient() {
         return recipient;
     }

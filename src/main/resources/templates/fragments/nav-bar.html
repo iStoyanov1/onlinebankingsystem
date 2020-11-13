@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<nav class="navbar navbar-expand-lg ">
-    <a class="navbar-brand" style="color: white" href="#">LOGO</a>
+<nav class="navbar navbar-expand-lg bg-light" style="opacity: 0.9;
+         border-top-right-radius: 30px;border-top-left-radius: 30px;; -moz-border-radius-topright: 30px;background-color: #dadde0;">
+    <a class="navbar-brand" href="#">LOGO</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,32 +12,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" style="color: white" th:href="@{/}">Начало</a>
+                <a class="nav-link" style="color: black" th:href="@{/}">Начало</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" style="color: white" th:href="@{/about}">За нас</a>
+                <a class="nav-link" style="color: black" th:href="@{/about}">За нас</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" style="color: white" th:href="@{/contacts}">Контакти</a>
+                <a class="nav-link" style="color: black" th:href="@{/contacts}">Контакти</a>
             </li>
-            <th:block sec:authorize="isAuthenticated()">
-                <li class="nav-item active">
-                    <a class="nav-link" style="color: white" th:href="@{/bankAccount}">Моята сметка</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" style="color: white" th:href="@{/transactions}">Последни транзакции</a>
-                </li>
-                <li class="nav-item active">
-                    <form action="/logout?login" method="post">
-                        <button class="logout-button nav-link">Logout</button>
-                    </form>
-                </li>
-            </th:block>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class=" form-control mr-sm-2 transparent-input " style="border:2px solid white" type="search"
+            <input class=" form-control mr-sm-2 transparent-input " style="border-radius: 50px" type="search"
                    placeholder="Търси.." aria-label="Search">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Търсене</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="border-radius: 50px">Търсене</button>
         </form>
     </div>
 </nav>

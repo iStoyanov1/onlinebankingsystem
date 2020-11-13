@@ -1,5 +1,11 @@
 .main {
-    background-image: url(https://cff-cav56vrdcl.netdna-ssl.com/wp-content/uploads/2017/05/Family-Cutout_Heart_Fotolia_101077810.jpg);
+    background-image: url(https://www.fairobserver.com/wp-content/uploads/2019/12/family-2.jpg);
+    height:80vh;
+    background-size: 100% auto ;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    /*border-top-right-radius: 30px;
+    border-top-left-radius: 30px*/
 }
 .transparent-input{
     background-color:transparent !important;
@@ -9,4 +15,13 @@
 }
 .register-main{
     background-image: url("../img/family-2 (1).jpg");
+}
+/*.login-background{
+    background-image: url("https://i.pinimg.com/originals/51/95/eb/5195ebb8c5f9772deda82aa2937134d3.jpg");
+    opacity: 0.9;
+    border-radius: 30px;
+}*/
+.btn-login{
+    border-radius: 50%;
+    width: 45%;
 }
