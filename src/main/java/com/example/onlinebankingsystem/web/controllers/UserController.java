@@ -1,5 +1,6 @@
 package com.example.onlinebankingsystem.web.controllers;
 
+import com.example.onlinebankingsystem.domain.models.binding.UserEditPasswordBindingModel;
 import com.example.onlinebankingsystem.domain.models.services.BankAccountServiceModel;
 import com.example.onlinebankingsystem.domain.models.services.CostServiceModel;
 import com.example.onlinebankingsystem.domain.models.services.IncomeServiceModel;
@@ -9,9 +10,9 @@ import com.example.onlinebankingsystem.services.interfaces.CostService;
 import com.example.onlinebankingsystem.services.interfaces.IncomeService;
 import com.example.onlinebankingsystem.services.interfaces.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
@@ -36,6 +37,7 @@ public class UserController {
     }
 
     @GetMapping("/profile")
+    @PreAuthorize("isAuthenticated()")
     public ModelAndView home(Principal principal, ModelAndView modelAndView){
 
         UserServiceModel user = this.userService.findUserByUsername(principal.getName());
@@ -48,6 +50,72 @@ public class UserController {
         modelAndView.setViewName("/user/profile");
         return modelAndView;
     }
+    @GetMapping("/profile/edit-phone")
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView editPhone(Principal principal, ModelAndView modelAndView){
+        UserServiceModel user = this.userService.findUserByUsername(principal.getName());
+        modelAndView.addObject("user", user);
+        modelAndView.setViewName("/user/edit/edit-phone");
+        return modelAndView;
+    }
 
+    @PostMapping("/profile/edit-phone")
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView editPhoneConfirm(@RequestParam("newPhone") String phone, Principal principal, ModelAndView modelAndView){
+        this.userService.editPhone(principal.getName(), phone);
+        modelAndView.setViewName("redirect:/user/profile");
+        return modelAndView;
+    }
 
+    @GetMapping("/profile/edit-password")
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView editPassword(Principal principal, ModelAndView modelAndView){
+        UserServiceModel user = this.userService.findUserByUsername(principal.getName());
+
+        UserEditPasswordBindingModel model = this.modelMapper.map(user, UserEditPasswordBindingModel.class);
+
+        modelAndView.addObject("model", model);
+        modelAndView.setViewName("/user/edit/edit-password");
+        return modelAndView;
+    }
+
+    @PostMapping("/profile/edit-password")
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView editPasswordConfirm(@ModelAttribute("model") UserEditPasswordBindingModel model, ModelAndView modelAndView){
+
+        if (!model.getPassword().equals(model.getConfirmPassword())){
+            modelAndView.setViewName("/user/edit/edit-password");
+            return modelAndView;
+        }
+        UserServiceModel userServiceModel = this.modelMapper.map(model, UserServiceModel.class);
+
+        this.userService.editPassword(userServiceModel,model.getOldPassword());
+
+        modelAndView.setViewName("redirect:/user/profile");
+        return modelAndView;
+    }
+
+    @GetMapping("/profile/edit-email")
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView editEmail(Principal principal, ModelAndView modelAndView){
+        UserServiceModel user = this.userService.findUserByUsername(principal.getName());
+        modelAndView.addObject("user", user);
+        modelAndView.setViewName("/user/edit/edit-email");
+        return modelAndView;
+    }
+
+    @PostMapping("/profile/edit-email")
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView editEmailConfirm(@RequestParam("email") String phone, Principal principal, ModelAndView modelAndView){
+        this.userService.editEmail(principal.getName(), phone);
+        modelAndView.setViewName("redirect:/user/profile");
+        return modelAndView;
+    }
+
+    @GetMapping("/profile/transactions")
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView transactionView(ModelAndView modelAndView, Principal principal){
+        modelAndView.setViewName("/user/transaction");
+        return modelAndView;
+    }
 }

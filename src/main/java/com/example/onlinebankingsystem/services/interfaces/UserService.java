@@ -7,4 +7,12 @@ public interface UserService extends UserDetailsService {
 
     UserServiceModel findUserByUsername(String username);
 
+    UserServiceModel editUsername(String oldUsername, String newUsername);
+
+    UserServiceModel editPhone(String username, String phone);
+
+    UserServiceModel editPassword(UserServiceModel userServiceModel, String password);
+
+    UserServiceModel editEmail(String username, String email);
+
 }
