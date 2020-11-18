@@ -14,40 +14,9 @@
         <div class="container">
             <div class="row mt-4">
                 <div class="col-sm-4">
-                    <table class="table table-bordered mt-4 table-responsive-lg">
-                        <tbody>
-                        <tr>
-                            <td style="border-color: dodgerblue">
-                                <img src="https://www.searchpng.com/wp-content/uploads/2019/02/Profile-PNG-Icon.png"
-                                     height="25"
-                                     width="25"><span
-                                    th:text="'   Потребител: ' + ${user.getUser().getFullName()}"></span>
-                                <hr>
-                                <img src="https://icons.iconarchive.com/icons/dtafalonso/android-l/256/Gmail-icon.png"
-                                     height="25"
-                                     width="25">
-                                <span class="text-left"
-                                      th:text="'   Имейл: ' + ${user.getUser().getEmail()}"></span>
-                            </td>
-                            </th>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-bordered">
-                        <tbody>
-                        <tr>
-                            <th scope="row" style="text-align: left; border-color: dodgerblue">Сметка:</th>
-                            <td style="border-color: dodgerblue"><h6 class="text-right"
-                                                                     th:text="${user.getAccountNumber()}"></h6></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" style="text-align: left; border-color: dodgerblue">Наличност:</th>
-                            <td style="border-color: dodgerblue"><h6 class="text-right"
-                                                                     th:text="${user.getBalance()} + ' ' + ${user.getCurrency().name()}"></h6>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div>
+                        <th:block th:include="~{/fragments/user-details}"></th:block>
+                    </div>
                 </div>
                 <div class="col">
                     <input type="hidden">
@@ -57,7 +26,7 @@
                         <h6 class="text-center mt-4">
                             <img src="https://www.pngrepo.com/png/181917/180/sort-arrows.png"
                                  height="25"
-                                 width="25">    Последни движения по сметка:</h6>
+                                 width="25"> Последни движения по сметка:</h6>
                         <hr>
                         <div class="row mt-4 justify-content-center">
                             <div class="col-sm-12 mr-4">
@@ -66,11 +35,11 @@
                                     <tbody>
                                     <thead>
                                     <tr>
-                                        <th  style="border-color: dodgerblue" scope="col">Дата</th>
-                                        <th  style="border-color: dodgerblue" scope="col">Подател</th>
-                                        <th  style="border-color: dodgerblue" scope="col">Сума</th>
-                                        <th  style="border-color: dodgerblue" scope="col">Получател - Сметка</th>
-                                        <th  style="border-color: dodgerblue" scope="col">Подател - Сметка</th>
+                                        <th style="border-color: dodgerblue" scope="col">Дата</th>
+                                        <th style="border-color: dodgerblue" scope="col">Подател</th>
+                                        <th style="border-color: dodgerblue" scope="col">Сума</th>
+                                        <th style="border-color: dodgerblue" scope="col">Получател - Сметка</th>
+                                        <th style="border-color: dodgerblue" scope="col">Подател - Сметка</th>
                                     </tr>
                                     </thead>
                                     <th:block th:each="income : ${userIncomes}">
@@ -92,11 +61,11 @@
                                 <table class="table mt-4 table-bordered">
                                     <thead>
                                     <tr>
-                                        <th  style="border-color: dodgerblue" scope="col">Дата</th>
-                                        <th  style="border-color: dodgerblue" scope="col">Подател</th>
-                                        <th  style="border-color: dodgerblue" scope="col">Сума</th>
-                                        <th  style="border-color: dodgerblue" scope="col">Получател - Сметка</th>
-                                        <th  style="border-color: dodgerblue" scope="col">Подател - Сметка</th>
+                                        <th style="border-color: dodgerblue" scope="col">Дата</th>
+                                        <th style="border-color: dodgerblue" scope="col">Подател</th>
+                                        <th style="border-color: dodgerblue" scope="col">Сума</th>
+                                        <th style="border-color: dodgerblue" scope="col">Получател - Сметка</th>
+                                        <th style="border-color: dodgerblue" scope="col">Подател - Сметка</th>
                                     </tr>
                                     </thead>
                                     <tbody>

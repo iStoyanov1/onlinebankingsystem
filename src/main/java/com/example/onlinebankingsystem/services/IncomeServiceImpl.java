@@ -41,4 +41,13 @@ public class IncomeServiceImpl implements IncomeService{
                 .collect(Collectors.toList());
 
     }
+
+    @Override
+    public List<IncomeServiceModel> findLastIncomesByUser(String username) {
+
+        return this.incomeRepository.findAllByRecipient_User_UsernameOrderByDateDesc(username)
+                .stream()
+                .map(income -> this.modelMapper.map(income, IncomeServiceModel.class))
+                .collect(Collectors.toList());
+    }
 }

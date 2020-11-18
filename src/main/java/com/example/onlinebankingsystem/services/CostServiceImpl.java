@@ -29,7 +29,7 @@ public class CostServiceImpl implements CostService {
     }
 
     @Override
-    public List<CostServiceModel> userCosts(String username) {
+    public List<CostServiceModel> userLastCosts(String username) {
         UserServiceModel user = this.userService.findUserByUsername(username);
         BankAccountServiceModel bankAccount = this.bankAccountService.findBankAccountByUser(user.getUsername());
 
@@ -37,5 +37,17 @@ public class CostServiceImpl implements CostService {
                 .stream()
                 .limit(3)
                 .map(cost -> this.modelMapper.map(cost, CostServiceModel.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CostServiceModel> userAllCosts(String username) {
+        /*UserServiceModel user = this.userService.findUserByUsername(username);
+
+        BankAccountServiceModel bankAccount = this.bankAccountService.findBankAccountByUser(user.getUsername());*/
+
+        return this.costRepository.findAllBySender_User_UsernameOrderByDateDesc(username)
+                .stream()
+                .map(cost -> this.modelMapper.map(cost, CostServiceModel.class)).collect(Collectors.toList());
+
     }
 }

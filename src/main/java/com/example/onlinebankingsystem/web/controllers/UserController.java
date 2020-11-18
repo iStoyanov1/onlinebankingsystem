@@ -5,6 +5,8 @@ import com.example.onlinebankingsystem.domain.models.services.BankAccountService
 import com.example.onlinebankingsystem.domain.models.services.CostServiceModel;
 import com.example.onlinebankingsystem.domain.models.services.IncomeServiceModel;
 import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
+import com.example.onlinebankingsystem.domain.models.view.BankAccountViewModel;
+import com.example.onlinebankingsystem.domain.models.view.CostViewModel;
 import com.example.onlinebankingsystem.services.interfaces.BankAccountService;
 import com.example.onlinebankingsystem.services.interfaces.CostService;
 import com.example.onlinebankingsystem.services.interfaces.IncomeService;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user")
@@ -41,9 +44,12 @@ public class UserController {
     public ModelAndView home(Principal principal, ModelAndView modelAndView){
 
         UserServiceModel user = this.userService.findUserByUsername(principal.getName());
-        BankAccountServiceModel bankAccount = this.bankAccountService.findBankAccountByUser(user.getUsername());
-        List<IncomeServiceModel> userIncomes = this.incomeService.findAllIncomesByUser(bankAccount.getUser().getUsername());
-        List<CostServiceModel> userCosts = this.costService.userCosts(bankAccount.getUser().getUsername());
+        BankAccountViewModel bankAccount = this.modelMapper.
+                map(this.bankAccountService
+                        .findBankAccountByUser(user.getUsername()),
+                        BankAccountViewModel.class);
+        List<IncomeServiceModel> userIncomes = this.incomeService.findAllIncomesByUser(principal.getName());
+        List<CostServiceModel> userCosts = this.costService.userLastCosts(principal.getName());
         modelAndView.addObject("userCosts", userCosts);
         modelAndView.addObject("userIncomes", userIncomes);
         modelAndView.addObject("user", bankAccount);
@@ -115,7 +121,27 @@ public class UserController {
     @GetMapping("/profile/transactions")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView transactionView(ModelAndView modelAndView, Principal principal){
+
+        List<CostViewModel> costs = this.costService.userAllCosts(principal.getName())
+                        .stream().map(cost -> this.modelMapper.map(cost, CostViewModel.class))
+                        .collect(Collectors.toList());
+        String userEmail = null;
+        String userFullName = null;
+        String userAcc = null;
+        for (CostViewModel cost : costs) {
+            userEmail = cost.getSender().getUser().getEmail();
+            userFullName = cost.getSender().getUser().getFullName();
+            userAcc = cost.getSender().getAccountNumber();
+        }
+        modelAndView.addObject("userEmail", userEmail);
+        modelAndView.addObject("userFullName", userFullName);
+        modelAndView.addObject("userAcc", userAcc);
+        modelAndView.addObject("userCosts", costs);
+
         modelAndView.setViewName("/user/transaction");
+
+
+
         return modelAndView;
     }
 }

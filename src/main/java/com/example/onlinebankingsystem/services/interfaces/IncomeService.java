@@ -6,6 +6,10 @@ import java.util.List;
 
 public interface IncomeService {
 
+    List<IncomeServiceModel> findLastIncomesByUser(String username);
+
     List<IncomeServiceModel> findAllIncomesByUser(String username);
+
+
 
 }

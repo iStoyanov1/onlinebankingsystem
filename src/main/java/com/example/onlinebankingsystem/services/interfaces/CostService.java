@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface CostService {
 
-    List<CostServiceModel> userCosts(String username);
+    List<CostServiceModel> userLastCosts(String username);
+
+    List<CostServiceModel> userAllCosts(String username);
 
 }
