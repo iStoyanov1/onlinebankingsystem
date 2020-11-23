@@ -1,6 +1,7 @@
 package com.example.onlinebankingsystem.services;
 
 import com.example.onlinebankingsystem.domain.models.services.BankAccountServiceModel;
+import com.example.onlinebankingsystem.domain.models.services.CostServiceModel;
 import com.example.onlinebankingsystem.domain.models.services.IncomeServiceModel;
 import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
 import com.example.onlinebankingsystem.repositories.IncomeRepository;
@@ -10,6 +11,7 @@ import com.example.onlinebankingsystem.services.interfaces.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,5 +51,12 @@ public class IncomeServiceImpl implements IncomeService{
                 .stream()
                 .map(income -> this.modelMapper.map(income, IncomeServiceModel.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<IncomeServiceModel> userIncomeBetweenDates(String username, Date from, Date to) {
+        return this.incomeRepository.findAllByRecipient_User_UsernameAndDateBetweenOrderByDateDesc(username, from, to)
+                .stream()
+                .map(income -> this.modelMapper.map(income, IncomeServiceModel.class)).collect(Collectors.toList());
     }
 }

@@ -29,4 +29,9 @@ public class BankAccountServiceImpl implements BankAccountService {
                 BankAccountServiceModel.class);
     }
 
+    @Override
+    public BankAccountServiceModel findBankAccountByUserId(int id) {
+        return this.modelMapper.map(this.bankAccountRepository
+                .findBankAccountByUser_Id(id), BankAccountServiceModel.class);
+    }
 }

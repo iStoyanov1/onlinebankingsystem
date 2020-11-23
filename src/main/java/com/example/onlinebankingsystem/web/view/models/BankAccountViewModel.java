@@ -1,10 +1,11 @@
-package com.example.onlinebankingsystem.domain.models.view;
+package com.example.onlinebankingsystem.web.view.models;
 
 public class BankAccountViewModel {
 
     private String accountNumber;
     private double balance;
     private UserViewModel user;
+    private String currency;
 
     public BankAccountViewModel() {
 
@@ -33,5 +34,13 @@ public class BankAccountViewModel {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }

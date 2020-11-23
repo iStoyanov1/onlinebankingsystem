@@ -38,37 +38,42 @@
         <!--        </div>-->
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="row">
+<!--                        <div class="col-sm-6">-->
+<!--                            <h1 class="ml-4 display-4 text-white mb-6">Добре дошли!</h1>-->
+<!--                            <p class="ml-4 text-white">Ние се грижим за вашето бъдеще!</p>-->
+<!--                        </div>-->
                         <div class="col-sm-6">
-                            <h1 class="ml-4 display-4 text-white mb-6">Добре дошли!</h1>
-                            <p class="ml-4 text-white">Ние се грижим за вашето бъдеще!</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <h1 class="ml-4 display-4 text-white mb-6">Добре дошли!</h1>
-                            <p class="ml-4 text-white">Ние се грижим за вашето бъдеще!</p>
+                            <p class="paragraph">Банкирай онлайн</p>
+                            <hr style="width: 70%; border-top: solid 6px #e3f2fd; border-radius: 50px">
+                            <p class="text-white" style="font-size: 30px; font-family: Arial; margin-left: 120px">Банкиранаето вече на един клик разстояние.</p>
+                            <a class="button-link" style="text-decoration:none;" href="#carouselExampleIndicators" role="button" data-slide="next">Влез в своя профил</a>
                         </div>
                     </div>
+
                 </div>
+
                 <div class="carousel-item">
-                    <div class="container-fluid mt-4 login-background"
-                         style="background-image: url(https://i.pinimg.com/originals/51/95/eb/5195ebb8c5f9772deda82aa2937134d3.jpg);
+                    <div class="container-fluid login-background"
+                         style="background-image: url(https://www.luxurylifestylemag.co.uk/wp-content/uploads/2020/01/bigstock-126686753.jpg);
                           border-radius: 30px; width: 75%; opacity: 0.9;  background-size: 100% auto ;
-                           background-position: center;
+                           background-position: bottom;
                            background-repeat: no-repeat;
+                           margin-top: 80px;
                              height:50vh;">
                         <div class="col-sm-4 mt-4 ">
                             <form th:action="@{/}" th:method="post">
                                 <input type="hidden" name="_csrf" value="c95ccb2b-1afa-47bd-bf7b-a5b72739470b">
-                                <label class="form-group font-weight-bold mt-4 text-center text-white">Влезте във вашия профил:</label>
                                 <div class="form-group text-xl-center font-weight-bold text-white mt-4">
-                                    <label for="username" class="font-weight-bold">Имейл:</label>
+                                    <label for="username" class="font-weight-bold text-dark" style="margin-top: 45px">Имейл:</label>
                                     <input type="text" class="form-control text-center" style="border-radius: 50px;"
                                            id="username" placeholder="Моля въведете вашият имейл.." name="username">
                                 </div>
                                 <div class="form-group text-xl-center font-weight-bold text-white mt-4">
-                                    <label for="password" class="font-weight-bold">Парола:</label>
+                                    <label for="password" class="font-weight-bold text-dark">Парола:</label>
                                     <input type="password" class="form-control text-center" style="border-radius: 50px"
                                            id="password"
                                            placeholder="Моля въведете вашата парола.." name="password">
@@ -80,10 +85,13 @@
                                 </div>
                             </form>
                         </div>
+<!--                        <a class="forgot-password" th:href="@{/forgot/password}">Забравена парола?</a>-->
                     </div>
+
                 </div>
             </div>
         </div>
+
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -92,7 +100,9 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
+        <a class="button" href="#carouselExampleIndicators" role="button" data-slide="next">
 
+        </a>
     </main>
     <footer>
         <th:block th:include="~{/fragments/footer}"></th:block>

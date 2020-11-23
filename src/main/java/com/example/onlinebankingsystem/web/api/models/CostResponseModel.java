@@ -1,16 +1,18 @@
-package com.example.onlinebankingsystem.domain.models.view;
+package com.example.onlinebankingsystem.web.api.models;
+
+import com.example.onlinebankingsystem.web.view.models.BankAccountViewModel;
 
 import java.sql.Date;
 
-public class IncomeViewModel {
+public class CostResponseModel {
 
     private Date date;
     private double quantity;
     private String details;
-    private String sender;
-    private BankAccountViewModel recipient;
+    private BankAccountViewModel sender;
+    private String recipient;
 
-    public IncomeViewModel() {
+    public CostResponseModel() {
     }
 
     public Date getDate() {
@@ -37,19 +39,19 @@ public class IncomeViewModel {
         this.details = details;
     }
 
-    public String getSender() {
+    public BankAccountViewModel getSender() {
         return sender;
     }
 
-    public void setSender(String sender) {
+    public void setSender(BankAccountViewModel sender) {
         this.sender = sender;
     }
 
-    public BankAccountViewModel getRecipient() {
+    public String getRecipient() {
         return recipient;
     }
 
-    public void setRecipient(BankAccountViewModel recipient) {
+    public void setRecipient(String recipient) {
         this.recipient = recipient;
     }
 }

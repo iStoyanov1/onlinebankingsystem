@@ -45,6 +45,8 @@ const incomeTable = ({date, details, quantity, sender, recipient}) =>
                       <td style="border-color: dodgerblue">${sender}</td>
                   </tr>`
 
+
+
 function showCosts() {
     fetch(UrlCosts.items)
         .then(response => response.json())
@@ -57,7 +59,37 @@ function showCosts() {
             });
             document.getElementById('transaction-table')
                 .innerHTML = result;
+
         });
+}
+
+
+
+
+
+function costsBetweenDates() {
+        $('#transaction-table').on('submit', function (ev){
+
+        fetch('/api/transaction/cost', {
+            method: "post"
+        })
+            .then(resp => resp.json())
+            .then(items => {
+                let result = '';
+                items.forEach(item => {
+                    const itemTable = costTable(item);
+                    result += itemTable;
+                });
+                document.getElementById('transaction-table')
+                    .innerHTML = result;
+            });
+
+
+
+        ev.preventDefault();
+
+        return false;
+    });
 }
 
 function showIncomes() {
@@ -72,6 +104,7 @@ function showIncomes() {
             });
             document.getElementById('transaction-table')
                 .innerHTML = result;
+
         });
 }
 
@@ -86,3 +119,6 @@ function displayTable() {
 }
 
 document.getElementById('transactionType').addEventListener("change", displayTable)
+
+
+

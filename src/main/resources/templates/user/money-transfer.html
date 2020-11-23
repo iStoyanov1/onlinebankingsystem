@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <main>
+        <div>
+            <th:block th:include="~{/fragments/nav-bar}"></th:block>
+        </div>
+        <th:block th:include="~{/fragments/user-nav-bar}"></th:block>
+        <div class="container">
+
+                <div class="container mb-4 mt-4">
+                    <div class="row">
+                        <div class="col-sm-5">
+
+                            <h1 style="margin-top: 100px; text-align: center">Превод по сметка в друга банка:</h1>
+                            <img style="height: 215px" class="img-icon" src="https://uxwing.com/wp-content/themes/uxwing/download/16-business-and-finance/bank-transfer.png"/>
+                            <p style="text-align: center"> Превод в лева по сметка в друга банка в България.</p>
+
+                            <a style="text-decoration: none" class="individual-link" th:href="@{/user/profile/transfer/payment/other/{id}(id = ${user.getId()})}">Създай превод</a>
+
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="hidden">
+                        </div>
+                        <div class="col-sm-5" >
+                            <h1 style="margin-top: 100px; text-align: center">Превод по сметка в БТБ:</h1>
+                            <img class="img-icon" src="https://static.thenounproject.com/png/1414626-200.png">
+                            <p style="text-align: center">Преводи по сметка на друг клиент на БТБ</p>
+
+                            <a style="text-decoration: none" class="individual-link" th:href="@{/user/profile/transfer/payment/{id}(id = ${user.getId()})}">Създай превод</a>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </main>
+    <footer style="margin-top: 10%">
+        <th:block th:include="~{/fragments/footer}"></th:block>
+    </footer>
+    <!--    <script src="/static/js/transactions.js"></script>-->
+    <script th:src="@{/js/transactions.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

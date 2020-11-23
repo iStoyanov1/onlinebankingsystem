@@ -7,4 +7,6 @@ public interface BankAccountService {
 
     BankAccountServiceModel findBankAccountByUser(String username);
 
+    BankAccountServiceModel findBankAccountByUserId(int id);
+
 }

@@ -15,4 +15,6 @@ public interface UserService extends UserDetailsService {
 
     UserServiceModel editEmail(String username, String email);
 
+    UserServiceModel findUserById(int id);
+
 }

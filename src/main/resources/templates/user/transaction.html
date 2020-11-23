@@ -12,13 +12,13 @@
         </div>
         <th:block th:include="~{/fragments/user-nav-bar}"></th:block>
         <div class="container">
-            <div class="container mb-4 mt-4">
-                <div class="row">
-                    <div class="col-sm-4">
-<!--                        <th:block th:each="cost : ${userCosts}">-->
+            <form id="filter-transactions" th:action="@{/api/transaction/cost}" th:method="post">
+                <div class="container mb-4 mt-4">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <!--                        <th:block th:each="cost : ${userCosts}">-->
                             <h6 class="text-dark mt-4">Движения по сметка:
-                                <span class="text-left"
-                                      th:text="${userAcc}"></span></h6>
+                                <span class="text-left" th:text="${user.getAccountNumber()}"/></h6>
 
                             <table class="table table-bordered mt-4 table-responsive-lg">
                                 <tbody>
@@ -26,53 +26,65 @@
                                     <td style="border-color: dodgerblue">
                                         <img src="https://www.searchpng.com/wp-content/uploads/2019/02/Profile-PNG-Icon.png"
                                              height="25"
-                                             width="25"><span
-                                            th:text="'   Потребител: ' + ${userFullName}"></span>
+                                             width="25"><span th:text="'   Потребител: ' + ${user.getUser().getFullName()}"/>
                                         <hr>
                                         <img src="https://icons.iconarchive.com/icons/dtafalonso/android-l/256/Gmail-icon.png"
                                              height="25"
                                              width="25">
-                                        <span class="text-left"
-                                              th:text="'   Имейл: ' + ${userEmail}"></span></h6>
+                                        <span class="text-left" th:text="'   Имейл: ' + ${user.getUser().getEmail()}"/></h6>
                                     </td>
                                     </th>
                                 </tr>
                                 </tbody>
                             </table>
-<!--                        </th:block>-->
-                    </div>
-                    <div class="col-sm-8" style="background-color: #edeff0; border-radius: 10px; height: 500px">
-                        <div class="form-group mt-4 text-center">
-                            <label class="text-center" for="transactionType">Избери вид транзакция:</label>
-                            <select class="form-control text-center" id="transactionType" onchange="displayTable()">
-                                <option>Всички</option>
-                                <option value="costs">Разходи</option>
-                                <option value="incomes">Приходи</option>
-                            </select>
+                            <!--                        </th:block>-->
+
+                            <h6>Търсене по:</h6><br>
+                            <h6 class="mb-2">Дата:</h6>
+                            От: <input type="date" style="width: 40%" name="dateFrom"> До: <input type="date"
+                                                                                                  style="width: 40%"
+                                                                                                  name="dateTo">
+
+                            <button id="submit-button" class="btn btn-info mt-4" style="border-radius: 5px;" onclick="costsBetweenDates()" >Покажи</button>
+
                         </div>
-                        <table class="table mt-4 table-bordered">
-                            <thead>
-                            <tr>
-                                <th style="border-color: dodgerblue" scope="col">Дата</th>
-                                <th style="border-color: dodgerblue" scope="col">Подател</th>
-                                <th style="border-color: dodgerblue" scope="col">Сума</th>
-                                <th style="border-color: dodgerblue" scope="col">Получател - Сметка</th>
-                                <th style="border-color: dodgerblue" scope="col">Подател - Сметка</th>
-                            </tr>
-                            </thead>
-                            <tbody id="transaction-table">
-                            </tbody>
-                        </table>
+                        <div class="col-sm-8" style="background-color: #edeff0; border-radius: 10px; height: 500px">
+                            <div class="form-group mt-4 text-center">
+                                <label class="text-center" for="transactionType">Избери вид транзакция:</label>
+                                <select class="form-control text-center" id="transactionType" onchange="displayTable()"
+                                        name="transaction">
+                                    <option th:value="all">Всички</option>
+                                    <option th:value="costs">Разходи</option>
+                                    <option th:value="incomes">Приходи</option>
+                                </select>
+                            </div>
+                            <table class="table mt-4 table-bordered">
+                                <thead>
+                                <tr>
+                                    <th style="border-color: dodgerblue" scope="col">Дата</th>
+                                    <th style="border-color: dodgerblue" scope="col">Подател</th>
+                                    <th style="border-color: dodgerblue" scope="col">Сума</th>
+                                    <th style="border-color: dodgerblue" scope="col">Получател - Сметка</th>
+                                    <th style="border-color: dodgerblue" scope="col">Подател - Сметка</th>
+                                </tr>
+                                </thead>
+                                <tbody id="transaction-table">
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
+<!--            </form>-->
         </div>
     </main>
     <footer>
         <th:block th:include="~{/fragments/footer}"></th:block>
     </footer>
-<!--    <script src="/static/js/costs.js"></script>-->
-    <script th:src="@{/js/costs.js}"></script>
+    <!--    <script src="/static/js/transactions.js"></script>-->
+    <script th:src="@{/js/transactions.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
 </div>
 </body>
 </html>

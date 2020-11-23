@@ -12,4 +12,6 @@ public interface BankAccountRepository extends JpaRepository<BankAccount, Intege
 
     BankAccount findBankAccountByUser_Username(String username);
 
+    BankAccount findBankAccountByUser_Id(int id);
+
 }

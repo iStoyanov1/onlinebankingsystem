@@ -1,12 +1,12 @@
-package com.example.onlinebankingsystem.web.controllers;
+package com.example.onlinebankingsystem.web.view.controllers.usercontroler;
 
 import com.example.onlinebankingsystem.domain.models.binding.UserEditPasswordBindingModel;
 import com.example.onlinebankingsystem.domain.models.services.BankAccountServiceModel;
 import com.example.onlinebankingsystem.domain.models.services.CostServiceModel;
 import com.example.onlinebankingsystem.domain.models.services.IncomeServiceModel;
 import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
-import com.example.onlinebankingsystem.domain.models.view.BankAccountViewModel;
-import com.example.onlinebankingsystem.domain.models.view.CostViewModel;
+import com.example.onlinebankingsystem.web.view.models.BankAccountViewModel;
+import com.example.onlinebankingsystem.web.api.models.CostResponseModel;
 import com.example.onlinebankingsystem.services.interfaces.BankAccountService;
 import com.example.onlinebankingsystem.services.interfaces.CostService;
 import com.example.onlinebankingsystem.services.interfaces.IncomeService;
@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,12 +44,12 @@ public class UserController {
 
     @GetMapping("/profile")
     @PreAuthorize("isAuthenticated()")
-    public ModelAndView home(Principal principal, ModelAndView modelAndView){
+    public ModelAndView home(Principal principal, ModelAndView modelAndView) {
 
         UserServiceModel user = this.userService.findUserByUsername(principal.getName());
         BankAccountViewModel bankAccount = this.modelMapper.
                 map(this.bankAccountService
-                        .findBankAccountByUser(user.getUsername()),
+                                .findBankAccountByUser(user.getUsername()),
                         BankAccountViewModel.class);
         List<IncomeServiceModel> userIncomes = this.incomeService.findAllIncomesByUser(principal.getName());
         List<CostServiceModel> userCosts = this.costService.userLastCosts(principal.getName());
@@ -56,9 +59,10 @@ public class UserController {
         modelAndView.setViewName("/user/profile");
         return modelAndView;
     }
+
     @GetMapping("/profile/edit-phone")
     @PreAuthorize("isAuthenticated()")
-    public ModelAndView editPhone(Principal principal, ModelAndView modelAndView){
+    public ModelAndView editPhone(Principal principal, ModelAndView modelAndView) {
         UserServiceModel user = this.userService.findUserByUsername(principal.getName());
         modelAndView.addObject("user", user);
         modelAndView.setViewName("/user/edit/edit-phone");
@@ -67,7 +71,7 @@ public class UserController {
 
     @PostMapping("/profile/edit-phone")
     @PreAuthorize("isAuthenticated()")
-    public ModelAndView editPhoneConfirm(@RequestParam("newPhone") String phone, Principal principal, ModelAndView modelAndView){
+    public ModelAndView editPhoneConfirm(@RequestParam("newPhone") String phone, Principal principal, ModelAndView modelAndView) {
         this.userService.editPhone(principal.getName(), phone);
         modelAndView.setViewName("redirect:/user/profile");
         return modelAndView;
@@ -75,7 +79,7 @@ public class UserController {
 
     @GetMapping("/profile/edit-password")
     @PreAuthorize("isAuthenticated()")
-    public ModelAndView editPassword(Principal principal, ModelAndView modelAndView){
+    public ModelAndView editPassword(Principal principal, ModelAndView modelAndView) {
         UserServiceModel user = this.userService.findUserByUsername(principal.getName());
 
         UserEditPasswordBindingModel model = this.modelMapper.map(user, UserEditPasswordBindingModel.class);
@@ -87,15 +91,15 @@ public class UserController {
 
     @PostMapping("/profile/edit-password")
     @PreAuthorize("isAuthenticated()")
-    public ModelAndView editPasswordConfirm(@ModelAttribute("model") UserEditPasswordBindingModel model, ModelAndView modelAndView){
+    public ModelAndView editPasswordConfirm(@ModelAttribute("model") UserEditPasswordBindingModel model, ModelAndView modelAndView) {
 
-        if (!model.getPassword().equals(model.getConfirmPassword())){
+        if (!model.getPassword().equals(model.getConfirmPassword())) {
             modelAndView.setViewName("/user/edit/edit-password");
             return modelAndView;
         }
         UserServiceModel userServiceModel = this.modelMapper.map(model, UserServiceModel.class);
 
-        this.userService.editPassword(userServiceModel,model.getOldPassword());
+        this.userService.editPassword(userServiceModel, model.getOldPassword());
 
         modelAndView.setViewName("redirect:/user/profile");
         return modelAndView;
@@ -103,7 +107,7 @@ public class UserController {
 
     @GetMapping("/profile/edit-email")
     @PreAuthorize("isAuthenticated()")
-    public ModelAndView editEmail(Principal principal, ModelAndView modelAndView){
+    public ModelAndView editEmail(Principal principal, ModelAndView modelAndView) {
         UserServiceModel user = this.userService.findUserByUsername(principal.getName());
         modelAndView.addObject("user", user);
         modelAndView.setViewName("/user/edit/edit-email");
@@ -112,36 +116,11 @@ public class UserController {
 
     @PostMapping("/profile/edit-email")
     @PreAuthorize("isAuthenticated()")
-    public ModelAndView editEmailConfirm(@RequestParam("email") String phone, Principal principal, ModelAndView modelAndView){
+    public ModelAndView editEmailConfirm(@RequestParam("email") String phone, Principal principal, ModelAndView modelAndView) {
         this.userService.editEmail(principal.getName(), phone);
         modelAndView.setViewName("redirect:/user/profile");
         return modelAndView;
     }
 
-    @GetMapping("/profile/transactions")
-    @PreAuthorize("isAuthenticated()")
-    public ModelAndView transactionView(ModelAndView modelAndView, Principal principal){
 
-        List<CostViewModel> costs = this.costService.userAllCosts(principal.getName())
-                        .stream().map(cost -> this.modelMapper.map(cost, CostViewModel.class))
-                        .collect(Collectors.toList());
-        String userEmail = null;
-        String userFullName = null;
-        String userAcc = null;
-        for (CostViewModel cost : costs) {
-            userEmail = cost.getSender().getUser().getEmail();
-            userFullName = cost.getSender().getUser().getFullName();
-            userAcc = cost.getSender().getAccountNumber();
-        }
-        modelAndView.addObject("userEmail", userEmail);
-        modelAndView.addObject("userFullName", userFullName);
-        modelAndView.addObject("userAcc", userAcc);
-        modelAndView.addObject("userCosts", costs);
-
-        modelAndView.setViewName("/user/transaction");
-
-
-
-        return modelAndView;
-    }
 }

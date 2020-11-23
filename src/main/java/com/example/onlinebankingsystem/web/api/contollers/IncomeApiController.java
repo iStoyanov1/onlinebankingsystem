@@ -1,6 +1,6 @@
-package com.example.onlinebankingsystem.web.api;
+package com.example.onlinebankingsystem.web.api.contollers;
 
-import com.example.onlinebankingsystem.domain.models.view.IncomeViewModel;
+import com.example.onlinebankingsystem.web.api.models.IncomeResponseModel;
 import com.example.onlinebankingsystem.services.interfaces.IncomeService;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,10 +22,10 @@ public class IncomeApiController {
     }
 
     @GetMapping(value = "/api/transaction/income")
-    public List<IncomeViewModel> allIncomes(Principal principal){
+    public List<IncomeResponseModel> allIncomes(Principal principal){
         return this.incomeService.findAllIncomesByUser(principal.getName())
                 .stream()
-                .map(income -> this.modelMapper.map(income, IncomeViewModel.class))
+                .map(income -> this.modelMapper.map(income, IncomeResponseModel.class))
                 .collect(Collectors.toList());
     }
 

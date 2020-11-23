@@ -1,8 +1,8 @@
 .main {
-    background-image: url(https://images.squarespace-cdn.com/content/v1/54f7b734e4b0a942c3cb65d2/1510556066095-KGRJSQGOIFZQXW9YB01C/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/bigstock--129208067.jpg?format=1500w);
+    background-image: url(https://www.proximus.be/dam/jcr:cbe5b027-a172-4aa7-a417-b80bc1e17c66/cdn/sites/iportal/images/blogs/social_media/res/family-management-app-social-en~2020-03-26-08-56-50~cache.jpg);
     height:80vh;
     background-size: 100% auto ;
-    background-position: bottom;
+    background-position: top;
     background-repeat: no-repeat;
     /*border-top-right-radius: 30px;
     border-top-left-radius: 30px*/
@@ -24,4 +24,73 @@
 .btn-login{
     border-radius: 50%;
     width: 45%;
+
+}
+.logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 450px;;
+    height: 50px;
+}
+
+.paragraph{
+    font-family: "Arial";
+    color: white;
+    font-size: 70px;
+    margin-top: 80px;
+    margin-left: 120px
+}
+.button-link {
+    display: block;
+    width: 200px;
+    height: 45px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+    margin-left: 120px;
+    text-decoration: none;
+}
+
+.img-icon{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    display: block;
+
+}
+
+.individual-link {
+    display: block;
+    width: 200px;
+    height: 45px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    line-height: 25px;
+    margin-left: 120px;
+    text-decoration: none;
+    margin-top: 30px;
+}
+.button-link:link {color:white}      /* unvisited link */
+.button-link:visited {color:white}  /* visited link */
+.button-link:hover {color:white}  /* mouse over link */
+.button-link:active {color:white}  /* selected link */
+
+.individual-link:link {color:white}      /* unvisited link */
+.individual-link:visited {color:white}  /* visited link */
+.individual-link:hover {color:white}  /* mouse over link */
+.individual-link:active {color:white}
+
+.forgot-password{
+    color: white;
+    margin-bottom: 80px;
+    margin-left: 95px;
 }

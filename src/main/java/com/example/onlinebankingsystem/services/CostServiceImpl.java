@@ -10,6 +10,7 @@ import com.example.onlinebankingsystem.services.interfaces.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,5 +50,12 @@ public class CostServiceImpl implements CostService {
                 .stream()
                 .map(cost -> this.modelMapper.map(cost, CostServiceModel.class)).collect(Collectors.toList());
 
+    }
+
+    @Override
+    public List<CostServiceModel> userCostsBetweenDates(String username, Date from, Date to) {
+        return this.costRepository.findAllBySender_User_UsernameAndDateBetweenOrderByDateDesc(username, from, to)
+                .stream()
+                .map(cost -> this.modelMapper.map(cost, CostServiceModel.class)).collect(Collectors.toList());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.onlinebankingsystem.domain.models.view;
+package com.example.onlinebankingsystem.web.view.models;
 
 public class UserViewModel {
 

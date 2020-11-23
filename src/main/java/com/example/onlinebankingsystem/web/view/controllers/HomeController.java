@@ -1,4 +1,4 @@
-package com.example.onlinebankingsystem.web.controllers;
+package com.example.onlinebankingsystem.web.view.controllers;
 
 import com.example.onlinebankingsystem.services.interfaces.UserService;
 import org.modelmapper.ModelMapper;

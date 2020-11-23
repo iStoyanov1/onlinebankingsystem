@@ -27,7 +27,7 @@
             </tr>
             <tr>
                 <th scope="row" style="text-align: left; border-color: dodgerblue">Наличност:</th>
-                <td style="border-color: dodgerblue"><h6 class="text-right" th:text="${user.getBalance()}"></h6>
+                <td style="border-color: dodgerblue"><h6 class="text-right" th:text="${user.getBalance()}+' ' + ${user.getCurrency()}"></h6>
                 </td>
             </tr>
             </tbody>
