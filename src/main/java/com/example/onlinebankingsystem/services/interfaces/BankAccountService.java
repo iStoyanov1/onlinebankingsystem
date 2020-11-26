@@ -1,7 +1,6 @@
 package com.example.onlinebankingsystem.services.interfaces;
 
-import com.example.onlinebankingsystem.domain.models.services.BankAccountServiceModel;
-import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
+import com.example.onlinebankingsystem.data.models.services.BankAccountServiceModel;
 
 public interface BankAccountService {
 
@@ -9,4 +8,7 @@ public interface BankAccountService {
 
     BankAccountServiceModel findBankAccountByUserId(int id);
 
+    BankAccountServiceModel findBankAccByAccNumber(String acc);
+
+    void reduceMoney(double amount, String acc);
 }

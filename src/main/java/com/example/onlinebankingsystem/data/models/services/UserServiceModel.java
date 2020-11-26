@@ -1,6 +1,4 @@
-package com.example.onlinebankingsystem.domain.models.services;
-
-import java.util.List;
+package com.example.onlinebankingsystem.data.models.services;
 
 public class UserServiceModel {
 

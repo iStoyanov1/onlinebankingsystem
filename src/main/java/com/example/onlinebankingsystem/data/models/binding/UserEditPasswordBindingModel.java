@@ -1,4 +1,4 @@
-package com.example.onlinebankingsystem.domain.models.binding;
+package com.example.onlinebankingsystem.data.models.binding;
 
 public class UserEditPasswordBindingModel {
 

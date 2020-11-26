@@ -1,10 +1,9 @@
-package com.example.onlinebankingsystem.domain.entities;
+package com.example.onlinebankingsystem.data.entities;
 
-import com.example.onlinebankingsystem.domain.base.BaseEntity;
+import com.example.onlinebankingsystem.data.base.BaseEntity;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity(name = "roles")
 public class Role extends BaseEntity implements GrantedAuthority {

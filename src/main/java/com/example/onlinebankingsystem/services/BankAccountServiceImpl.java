@@ -1,7 +1,7 @@
 package com.example.onlinebankingsystem.services;
 
-import com.example.onlinebankingsystem.domain.models.services.BankAccountServiceModel;
-import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
+import com.example.onlinebankingsystem.data.entities.BankAccount;
+import com.example.onlinebankingsystem.data.models.services.BankAccountServiceModel;
 import com.example.onlinebankingsystem.repositories.BankAccountRepository;
 import com.example.onlinebankingsystem.services.interfaces.BankAccountService;
 import com.example.onlinebankingsystem.services.interfaces.UserService;
@@ -33,5 +33,18 @@ public class BankAccountServiceImpl implements BankAccountService {
     public BankAccountServiceModel findBankAccountByUserId(int id) {
         return this.modelMapper.map(this.bankAccountRepository
                 .findBankAccountByUser_Id(id), BankAccountServiceModel.class);
+    }
+
+    @Override
+    public BankAccountServiceModel findBankAccByAccNumber(String acc) {
+        return this.modelMapper.map(this.bankAccountRepository.findBankAccountByAccountNumber(acc),
+                            BankAccountServiceModel.class);
+    }
+
+    @Override
+    public void reduceMoney(double amount, String acc) {
+        BankAccount bankAccount = this.bankAccountRepository.findBankAccountByAccountNumber(acc);
+        bankAccount.setBalance(bankAccount.getBalance() - amount);
+
     }
 }

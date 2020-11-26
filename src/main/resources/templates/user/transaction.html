@@ -12,7 +12,7 @@
         </div>
         <th:block th:include="~{/fragments/user-nav-bar}"></th:block>
         <div class="container">
-            <form id="filter-transactions" th:action="@{/api/transaction/cost}" th:method="post">
+            <form id="filter-transactions" th:action="@{/user/profile/transactions}" th:method="post">
                 <div class="container mb-4 mt-4">
                     <div class="row">
                         <div class="col-sm-4">
@@ -45,7 +45,7 @@
                                                                                                   style="width: 40%"
                                                                                                   name="dateTo">
 
-                            <button id="submit-button" class="btn btn-info mt-4" style="border-radius: 5px;" onclick="costsBetweenDates()" >Покажи</button>
+                            <button id="submit-button" class="btn btn-info mt-4" style="border-radius: 5px;" onclick="costsBetweenDates()">Покажи</button>
 
                         </div>
                         <div class="col-sm-8" style="background-color: #edeff0; border-radius: 10px; height: 500px">

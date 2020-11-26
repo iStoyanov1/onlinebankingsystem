@@ -1,6 +1,4 @@
-package com.example.onlinebankingsystem.domain.models.services;
-
-import com.example.onlinebankingsystem.domain.entities.BankAccount;
+package com.example.onlinebankingsystem.data.models.services;
 
 import java.sql.Date;
 

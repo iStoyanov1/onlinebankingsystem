@@ -1,7 +1,6 @@
 package com.example.onlinebankingsystem.repositories;
 
-import com.example.onlinebankingsystem.domain.entities.Cost;
-import com.example.onlinebankingsystem.domain.entities.Income;
+import com.example.onlinebankingsystem.data.entities.Income;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

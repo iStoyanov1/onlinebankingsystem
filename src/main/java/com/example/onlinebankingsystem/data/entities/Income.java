@@ -1,20 +1,26 @@
-package com.example.onlinebankingsystem.domain.models.services;
+package com.example.onlinebankingsystem.data.entities;
 
-import com.example.onlinebankingsystem.domain.entities.BankAccount;
+import com.example.onlinebankingsystem.data.base.BaseEntity;
 
+
+import javax.persistence.*;
 import java.sql.Date;
 
-public class IncomeServiceModel {
+@Entity(name = "income")
+public class Income extends BaseEntity {
+
 
     private Date date;
     private double quantity;
     private String details;
     private String sender;
-    private BankAccountServiceModel recipient;
+    private BankAccount recipient;
 
-    public IncomeServiceModel() {
+    public Income() {
     }
 
+
+    @Column(name = "date")
     public Date getDate() {
         return date;
     }
@@ -23,6 +29,7 @@ public class IncomeServiceModel {
         this.date = date;
     }
 
+    @Column(name = "quantity")
     public double getQuantity() {
         return quantity;
     }
@@ -31,6 +38,7 @@ public class IncomeServiceModel {
         this.quantity = quantity;
     }
 
+    @Column(name = "details")
     public String getDetails() {
         return details;
     }
@@ -39,6 +47,7 @@ public class IncomeServiceModel {
         this.details = details;
     }
 
+    @Column(name = "sender")
     public String getSender() {
         return sender;
     }
@@ -47,11 +56,12 @@ public class IncomeServiceModel {
         this.sender = sender;
     }
 
-    public BankAccountServiceModel getRecipient() {
+    @OneToOne
+    public BankAccount getRecipient() {
         return recipient;
     }
 
-    public void setRecipient(BankAccountServiceModel recipient) {
+    public void setRecipient(BankAccount recipient) {
         this.recipient = recipient;
     }
 }

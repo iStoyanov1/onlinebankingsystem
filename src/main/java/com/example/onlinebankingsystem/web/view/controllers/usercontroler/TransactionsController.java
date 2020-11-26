@@ -1,8 +1,8 @@
 package com.example.onlinebankingsystem.web.view.controllers.usercontroler;
 
-import com.example.onlinebankingsystem.domain.models.services.CostServiceModel;
-import com.example.onlinebankingsystem.domain.models.services.IncomeServiceModel;
 import com.example.onlinebankingsystem.services.interfaces.BankAccountService;
+import com.example.onlinebankingsystem.services.interfaces.CostService;
+import com.example.onlinebankingsystem.services.interfaces.IncomeService;
 import com.example.onlinebankingsystem.web.view.models.BankAccountViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user")
@@ -22,10 +20,14 @@ public class TransactionsController {
 
     private final ModelMapper modelMapper;
     private final BankAccountService bankAccountService;
+    private final CostService costService;
+    private final IncomeService incomeService;
 
-    public TransactionsController(ModelMapper modelMapper, BankAccountService bankAccountService) {
+    public TransactionsController(ModelMapper modelMapper, BankAccountService bankAccountService, CostService costService, IncomeService incomeService) {
         this.modelMapper = modelMapper;
         this.bankAccountService = bankAccountService;
+        this.costService = costService;
+        this.incomeService = incomeService;
     }
 
 
@@ -60,10 +62,10 @@ public class TransactionsController {
         return modelAndView;
     }
 
-    /*@PostMapping("/profile/transactions")
+  /*  @PostMapping("/profile/transactions")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView transactionByDate(ModelAndView modelAndView, Principal principal, @RequestParam("dateFrom") String dateFrom,
-                                          @RequestParam("dateTo") String dateTo, @RequestParam("transaction") String transaction) throws ParseException {
+                                          @RequestParam("dateTo") String dateTo, @RequestParam("transaction") String transaction) throws ParseException, ParseException {
         Date convertDateFrom = new SimpleDateFormat("yyyy-MM-dd").parse(dateFrom);
         Date convertDateTo = new SimpleDateFormat("yyyy-MM-dd").parse(dateTo);
 
@@ -102,5 +104,5 @@ public class TransactionsController {
                 .map(incomes -> this.modelMapper.map(incomes, IncomeServiceModel.class))
                 .collect(Collectors.toList());
     }
-    */
+*/
 }

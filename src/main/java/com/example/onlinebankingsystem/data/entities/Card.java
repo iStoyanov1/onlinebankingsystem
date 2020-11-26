@@ -1,11 +1,9 @@
-package com.example.onlinebankingsystem.domain.entities;
+package com.example.onlinebankingsystem.data.entities;
 
-import com.example.onlinebankingsystem.domain.base.BaseEntity;
-import com.fasterxml.jackson.databind.ser.Serializers;
+import com.example.onlinebankingsystem.data.base.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import java.sql.Date;
 

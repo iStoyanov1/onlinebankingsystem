@@ -1,12 +1,10 @@
 package com.example.onlinebankingsystem.web.view.controllers.usercontroler;
 
-import com.example.onlinebankingsystem.domain.models.binding.UserEditPasswordBindingModel;
-import com.example.onlinebankingsystem.domain.models.services.BankAccountServiceModel;
-import com.example.onlinebankingsystem.domain.models.services.CostServiceModel;
-import com.example.onlinebankingsystem.domain.models.services.IncomeServiceModel;
-import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
+import com.example.onlinebankingsystem.data.models.binding.UserEditPasswordBindingModel;
+import com.example.onlinebankingsystem.data.models.services.CostServiceModel;
+import com.example.onlinebankingsystem.data.models.services.IncomeServiceModel;
+import com.example.onlinebankingsystem.data.models.services.UserServiceModel;
 import com.example.onlinebankingsystem.web.view.models.BankAccountViewModel;
-import com.example.onlinebankingsystem.web.api.models.CostResponseModel;
 import com.example.onlinebankingsystem.services.interfaces.BankAccountService;
 import com.example.onlinebankingsystem.services.interfaces.CostService;
 import com.example.onlinebankingsystem.services.interfaces.IncomeService;
@@ -18,11 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user")
@@ -51,7 +45,7 @@ public class UserController {
                 map(this.bankAccountService
                                 .findBankAccountByUser(user.getUsername()),
                         BankAccountViewModel.class);
-        List<IncomeServiceModel> userIncomes = this.incomeService.findAllIncomesByUser(principal.getName());
+        List<IncomeServiceModel> userIncomes = this.incomeService.findLastIncomesByUser(principal.getName());
         List<CostServiceModel> userCosts = this.costService.userLastCosts(principal.getName());
         modelAndView.addObject("userCosts", userCosts);
         modelAndView.addObject("userIncomes", userIncomes);

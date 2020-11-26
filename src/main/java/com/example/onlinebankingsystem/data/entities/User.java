@@ -1,12 +1,9 @@
-package com.example.onlinebankingsystem.domain.entities;
+package com.example.onlinebankingsystem.data.entities;
 
-import com.example.onlinebankingsystem.domain.base.BaseEntity;
-import org.springframework.security.core.GrantedAuthority;
+import com.example.onlinebankingsystem.data.base.BaseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 @Entity(name = "users")

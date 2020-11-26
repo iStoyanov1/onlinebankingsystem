@@ -1,7 +1,7 @@
-package com.example.onlinebankingsystem.domain.entities;
+package com.example.onlinebankingsystem.data.entities;
 
-import com.example.onlinebankingsystem.domain.base.BaseEntity;
-import com.example.onlinebankingsystem.domain.enums.AccountCurrency;
+import com.example.onlinebankingsystem.data.base.BaseEntity;
+import com.example.onlinebankingsystem.data.enums.AccountCurrency;
 
 import javax.persistence.*;
 

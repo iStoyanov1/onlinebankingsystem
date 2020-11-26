@@ -1,6 +1,6 @@
-package com.example.onlinebankingsystem.domain.entities;
+package com.example.onlinebankingsystem.data.entities;
 
-import com.example.onlinebankingsystem.domain.base.BaseEntity;
+import com.example.onlinebankingsystem.data.base.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

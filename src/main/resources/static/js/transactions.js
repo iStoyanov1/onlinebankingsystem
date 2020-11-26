@@ -65,13 +65,15 @@ function showCosts() {
 
 
 
-
-
 function costsBetweenDates() {
-        $('#transaction-table').on('submit', function (ev){
+        $('#submit-button').on('submit', function (ev){
 
         fetch('/api/transaction/cost', {
-            method: "post"
+            method: "post",
+            headers : {
+                'Accept' : 'application/json',
+                'Content-Type' : 'application/json'
+            },
         })
             .then(resp => resp.json())
             .then(items => {

@@ -1,4 +1,4 @@
-package com.example.onlinebankingsystem.domain.base;
+package com.example.onlinebankingsystem.data.base;
 
 import javax.persistence.*;
 

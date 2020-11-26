@@ -1,7 +1,7 @@
 package com.example.onlinebankingsystem.services;
 
-import com.example.onlinebankingsystem.domain.entities.User;
-import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
+import com.example.onlinebankingsystem.data.entities.User;
+import com.example.onlinebankingsystem.data.models.services.UserServiceModel;
 import com.example.onlinebankingsystem.repositories.UserRepository;
 import com.example.onlinebankingsystem.services.interfaces.UserService;
 import org.modelmapper.ModelMapper;

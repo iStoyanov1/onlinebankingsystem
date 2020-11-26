@@ -1,6 +1,5 @@
 package com.example.onlinebankingsystem.web.api.contollers;
 
-import com.example.onlinebankingsystem.domain.models.services.CostServiceModel;
 import com.example.onlinebankingsystem.web.api.models.CostResponseModel;
 import com.example.onlinebankingsystem.services.interfaces.CostService;
 import org.modelmapper.ModelMapper;
@@ -38,7 +37,7 @@ public class CostApiController {
 
     }
 
-   /*@PostMapping(value = "/api/transaction/cost")
+    @PostMapping(value = "/api/transaction/cost")
     public void costsBetweenDates(Principal principal, @RequestParam("dateFrom") String dateFrom,
                                                      @RequestParam("dateTo") String dateTo, HttpServletResponse response) throws ParseException, IOException {
 
@@ -48,13 +47,14 @@ public class CostApiController {
         java.sql.Date fromDate = new java.sql.Date(convertDateFrom.getTime());
         java.sql.Date toDate = new java.sql.Date(convertDateTo.getTime());
 
+        System.out.printf("");
+
         this.costService.userCostsBetweenDates(principal.getName(), fromDate, toDate)
                 .stream()
                 .map(cost -> this.modelMapper.map(cost, CostResponseModel.class))
                 .collect(Collectors.toList());
 
-        response.sendRedirect("/user/profile/transactions");
+        response.sendRedirect("redirect:/user/profile/transactions");
 
-
-    }*/
+    }
 }

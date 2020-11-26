@@ -58,7 +58,7 @@
 
                 <div class="carousel-item">
                     <div class="container-fluid login-background"
-                         style="background-image: url(https://www.luxurylifestylemag.co.uk/wp-content/uploads/2020/01/bigstock-126686753.jpg);
+                         style="background-image: url(https://www.contino.pl/wp-content/uploads/2019/07/workbench-3430889_1280.jpg);
                           border-radius: 30px; width: 75%; opacity: 0.9;  background-size: 100% auto ;
                            background-position: bottom;
                            background-repeat: no-repeat;
@@ -69,21 +69,27 @@
                                 <input type="hidden" name="_csrf" value="c95ccb2b-1afa-47bd-bf7b-a5b72739470b">
                                 <div class="form-group text-xl-center font-weight-bold text-white mt-4">
                                     <label for="username" class="font-weight-bold text-dark" style="margin-top: 45px">Имейл:</label>
-                                    <input type="text" class="form-control text-center" style="border-radius: 50px;"
+                                    <input type="text" class="form-control text-center" style="border-radius: 5px"
                                            id="username" placeholder="Моля въведете вашият имейл.." name="username">
                                 </div>
                                 <div class="form-group text-xl-center font-weight-bold text-white mt-4">
                                     <label for="password" class="font-weight-bold text-dark">Парола:</label>
-                                    <input type="password" class="form-control text-center" style="border-radius: 50px"
-                                           id="password"
+                                    <input type="password" class="form-control text-center"
+                                           id="password" style="border-radius: 5px"
                                            placeholder="Моля въведете вашата парола.." name="password">
                                 </div>
                                 <div class="col text-center mb-4 mt-4">
-                                    <button type="submit" class="btn btn-success my-2 my-sm-0 btn-login"
-                                            style="border-radius: 50px">Вход
+                                    <button type="submit" class="btn btn-info my-2 my-sm-0 btn-login"
+                                            style="border-radius: 5px"
+                                            >Вход
                                     </button>
                                 </div>
                             </form>
+                            <th:block th:if="${param.error}">
+                                <div class="text-center" style="color: red; background-color: white; opacity: 0.6; border-radius: 5px ;font-size: large; font-family: Arial; ">
+                                    <b>Невалдни потребителско име/парола</b>
+                                </div>
+                            </th:block>
                         </div>
 <!--                        <a class="forgot-password" th:href="@{/forgot/password}">Забравена парола?</a>-->
                     </div>
@@ -109,5 +115,4 @@
     </footer>
 </div>
 </body>
-
 </html>

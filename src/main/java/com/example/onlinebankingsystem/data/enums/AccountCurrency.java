@@ -1,4 +1,4 @@
-package com.example.onlinebankingsystem.domain.enums;
+package com.example.onlinebankingsystem.data.enums;
 
 public enum AccountCurrency {
 

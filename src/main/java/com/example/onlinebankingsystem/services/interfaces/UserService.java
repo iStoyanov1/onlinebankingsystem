@@ -1,6 +1,6 @@
 package com.example.onlinebankingsystem.services.interfaces;
 
-import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
+import com.example.onlinebankingsystem.data.models.services.UserServiceModel;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserService extends UserDetailsService {

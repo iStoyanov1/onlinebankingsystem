@@ -1,27 +1,16 @@
-package com.example.onlinebankingsystem.domain.models.services;
+package com.example.onlinebankingsystem.data.models.binding;
 
-import com.example.onlinebankingsystem.domain.entities.User;
-import com.example.onlinebankingsystem.domain.enums.AccountCurrency;
+import com.example.onlinebankingsystem.data.entities.User;
+import com.example.onlinebankingsystem.data.enums.AccountCurrency;
 
-public class BankAccountServiceModel {
+public class BankAccBindingModel {
 
-    private int id;
     private String accountNumber;
     private AccountCurrency currency;
     private double balance;
-    private UserServiceModel user;
+    private String user;
 
-
-    public BankAccountServiceModel() {
-
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public BankAccBindingModel() {
     }
 
     public String getAccountNumber() {
@@ -48,11 +37,11 @@ public class BankAccountServiceModel {
         this.balance = balance;
     }
 
-    public UserServiceModel getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(UserServiceModel user) {
+    public void setUser(String user) {
         this.user = user;
     }
 }

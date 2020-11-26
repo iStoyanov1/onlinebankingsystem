@@ -1,9 +1,8 @@
 package com.example.onlinebankingsystem.services;
 
-import com.example.onlinebankingsystem.domain.models.services.BankAccountServiceModel;
-import com.example.onlinebankingsystem.domain.models.services.CostServiceModel;
-import com.example.onlinebankingsystem.domain.models.services.IncomeServiceModel;
-import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
+import com.example.onlinebankingsystem.data.models.services.BankAccountServiceModel;
+import com.example.onlinebankingsystem.data.models.services.IncomeServiceModel;
+import com.example.onlinebankingsystem.data.models.services.UserServiceModel;
 import com.example.onlinebankingsystem.repositories.IncomeRepository;
 import com.example.onlinebankingsystem.services.interfaces.BankAccountService;
 import com.example.onlinebankingsystem.services.interfaces.IncomeService;
@@ -38,7 +37,6 @@ public class IncomeServiceImpl implements IncomeService{
 
         return this.incomeRepository.findAllByRecipient_User_UsernameOrderByDateDesc(bankAccount.getUser().getUsername())
                 .stream()
-                .limit(3)
                 .map(income -> this.modelMapper.map(income, IncomeServiceModel.class))
                 .collect(Collectors.toList());
 
@@ -49,6 +47,7 @@ public class IncomeServiceImpl implements IncomeService{
 
         return this.incomeRepository.findAllByRecipient_User_UsernameOrderByDateDesc(username)
                 .stream()
+                .limit(3)
                 .map(income -> this.modelMapper.map(income, IncomeServiceModel.class))
                 .collect(Collectors.toList());
     }

@@ -1,7 +1,6 @@
 package com.example.onlinebankingsystem.services.interfaces;
 
-import com.example.onlinebankingsystem.domain.models.services.CostServiceModel;
-import com.example.onlinebankingsystem.domain.models.services.IncomeServiceModel;
+import com.example.onlinebankingsystem.data.models.services.IncomeServiceModel;
 
 import java.sql.Date;
 import java.util.List;

@@ -1,8 +1,9 @@
 package com.example.onlinebankingsystem.services;
 
-import com.example.onlinebankingsystem.domain.models.services.BankAccountServiceModel;
-import com.example.onlinebankingsystem.domain.models.services.CostServiceModel;
-import com.example.onlinebankingsystem.domain.models.services.UserServiceModel;
+import com.example.onlinebankingsystem.data.entities.Cost;
+import com.example.onlinebankingsystem.data.models.services.BankAccountServiceModel;
+import com.example.onlinebankingsystem.data.models.services.CostServiceModel;
+import com.example.onlinebankingsystem.data.models.services.UserServiceModel;
 import com.example.onlinebankingsystem.repositories.CostRepository;
 import com.example.onlinebankingsystem.services.interfaces.BankAccountService;
 import com.example.onlinebankingsystem.services.interfaces.CostService;
@@ -57,5 +58,11 @@ public class CostServiceImpl implements CostService {
         return this.costRepository.findAllBySender_User_UsernameAndDateBetweenOrderByDateDesc(username, from, to)
                 .stream()
                 .map(cost -> this.modelMapper.map(cost, CostServiceModel.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public void setCost(CostServiceModel cost) {
+
+        this.costRepository.saveAndFlush(this.modelMapper.map(cost, Cost.class));
     }
 }
