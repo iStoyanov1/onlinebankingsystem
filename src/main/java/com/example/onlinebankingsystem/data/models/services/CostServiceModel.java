@@ -1,8 +1,10 @@
 package com.example.onlinebankingsystem.data.models.services;
 
+import com.example.onlinebankingsystem.data.models.services.base.BaseServiceModel;
+
 import java.sql.Date;
 
-public class CostServiceModel {
+public class CostServiceModel extends BaseServiceModel {
 
     private Date date;
     private double quantity;

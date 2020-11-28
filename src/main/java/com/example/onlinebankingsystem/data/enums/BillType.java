@@ -2,5 +2,5 @@ package com.example.onlinebankingsystem.data.enums;
 
 public enum BillType {
 
-    Интернет, Образноване, Телевизия, Телефон, Топлоснабдяване, Кредит
+    Интернет, Образование, Телевизия, Телефон, Топлоснабдяване, Кредит
 }

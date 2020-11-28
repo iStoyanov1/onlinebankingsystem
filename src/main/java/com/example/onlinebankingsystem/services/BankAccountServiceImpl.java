@@ -42,8 +42,8 @@ public class BankAccountServiceImpl implements BankAccountService {
     }
 
     @Override
-    public void reduceMoney(double amount, String acc) {
-        BankAccount bankAccount = this.bankAccountRepository.findBankAccountByAccountNumber(acc);
+    public void reduceBalance(double amount, BankAccountServiceModel bankAccountServiceModel) {
+        BankAccount bankAccount = this.bankAccountRepository.findBankAccountByAccountNumber(bankAccountServiceModel.getAccountNumber());
         bankAccount.setBalance(bankAccount.getBalance() - amount);
 
     }

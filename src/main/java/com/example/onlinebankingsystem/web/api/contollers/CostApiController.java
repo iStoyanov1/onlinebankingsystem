@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.awt.print.Pageable;
 import java.io.IOException;
 import java.security.Principal;
 import java.text.ParseException;
@@ -29,7 +30,7 @@ public class CostApiController {
     }
 
     @GetMapping(value = "/api/transaction/cost")
-    public List<CostResponseModel> costs(Principal principal){
+    public List<CostResponseModel> costs(Principal principal, Pageable pageable){
 
         return this.costService.userAllCosts(principal.getName())
                 .stream().map(cost -> this.modelMapper.map(cost, CostResponseModel.class))
@@ -46,8 +47,6 @@ public class CostApiController {
 
         java.sql.Date fromDate = new java.sql.Date(convertDateFrom.getTime());
         java.sql.Date toDate = new java.sql.Date(convertDateTo.getTime());
-
-        System.out.printf("");
 
         this.costService.userCostsBetweenDates(principal.getName(), fromDate, toDate)
                 .stream()

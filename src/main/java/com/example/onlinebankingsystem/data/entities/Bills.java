@@ -19,6 +19,7 @@ public class Bills extends BaseEntity {
    }
 
    @Column(name = "type")
+   @Enumerated(EnumType.STRING)
    public BillType getType() {
       return type;
    }

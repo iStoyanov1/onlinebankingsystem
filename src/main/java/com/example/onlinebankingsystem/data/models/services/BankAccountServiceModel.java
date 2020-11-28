@@ -1,10 +1,10 @@
 package com.example.onlinebankingsystem.data.models.services;
 
 import com.example.onlinebankingsystem.data.enums.AccountCurrency;
+import com.example.onlinebankingsystem.data.models.services.base.BaseServiceModel;
 
-public class BankAccountServiceModel {
+public class BankAccountServiceModel extends BaseServiceModel {
 
-    private int id;
     private String accountNumber;
     private AccountCurrency currency;
     private double balance;
@@ -13,14 +13,6 @@ public class BankAccountServiceModel {
 
     public BankAccountServiceModel() {
 
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getAccountNumber() {

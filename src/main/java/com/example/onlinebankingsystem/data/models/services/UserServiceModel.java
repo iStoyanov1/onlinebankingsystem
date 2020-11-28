@@ -1,8 +1,9 @@
 package com.example.onlinebankingsystem.data.models.services;
 
-public class UserServiceModel {
+import com.example.onlinebankingsystem.data.models.services.base.BaseServiceModel;
 
-    private int id;
+public class UserServiceModel extends BaseServiceModel {
+
     private String username;
     private String fullName;
     private String email;
@@ -15,9 +16,6 @@ public class UserServiceModel {
     public UserServiceModel() {
     }
 
-    public int getId() {
-        return id;
-    }
 
     public String getUsername() {
         return username;
@@ -43,9 +41,6 @@ public class UserServiceModel {
         this.pin = pin;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;
