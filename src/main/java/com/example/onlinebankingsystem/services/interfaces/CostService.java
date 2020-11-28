@@ -13,6 +13,6 @@ public interface CostService {
 
     List<CostServiceModel> userCostsBetweenDates(String username, Date from, Date to);
 
-    void setCost(CostServiceModel cost);
+    void setCost(CostServiceModel cost, String costDetails);
 
 }

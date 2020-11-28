@@ -46,8 +46,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserServiceModel editPhone(String username, String phone) {
-        User user = this.userRepository.findUserByUsername(username);
+    public UserServiceModel editPhone(UserServiceModel userServiceModel, String phone) {
+        User user = this.userRepository.findUserByUsername(userServiceModel.getUsername());
 
         if (phone == null || phone.equals("")){
             throw new IllegalArgumentException();
@@ -77,8 +77,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserServiceModel editEmail(String username, String email) {
-        User user = this.userRepository.findUserByUsername(username);
+    public UserServiceModel editEmail(UserServiceModel userServiceModel, String email) {
+        User user = this.userRepository.findUserByUsername(userServiceModel.getUsername());
 
         if (email == null || email.equals("")){
             throw new IllegalArgumentException();

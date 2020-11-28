@@ -9,11 +9,11 @@ public interface UserService extends UserDetailsService {
 
     UserServiceModel editUsername(String oldUsername, String newUsername);
 
-    UserServiceModel editPhone(String username, String phone);
-
     UserServiceModel editPassword(UserServiceModel userServiceModel, String password);
 
-    UserServiceModel editEmail(String username, String email);
+    UserServiceModel editEmail(UserServiceModel userServiceModel, String email);
+
+    UserServiceModel editPhone(UserServiceModel userServiceModel, String phone);
 
     UserServiceModel findUserById(int id);
 

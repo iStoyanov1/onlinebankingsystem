@@ -1,5 +1,9 @@
 package com.example.onlinebankingsystem.data.models.binding;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class UserEditPasswordBindingModel {
 
     private String username;
@@ -26,6 +30,14 @@ public class UserEditPasswordBindingModel {
         this.oldPassword = oldPassword;
     }
 
+    //"Паролата трябва да съдържа: \nМинимум 8 символа.\n " +
+    //                    "Минимум една малка буква.\n Минимум една главна буква. \n" +
+    //                    "Поне една цифра.\n Поне един специален символ(@, #, % и др.) "
+
+    @Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
+            message = "Паролата трябва да съдържа: \nМинимум 8 символа.\n " +
+            "Минимум една малка буква.\n Минимум една главна буква. \n" +
+            "Поне една цифра.\n Поне един специален символ(@, #, % и др.) ")
     public String getPassword() {
         return password;
     }

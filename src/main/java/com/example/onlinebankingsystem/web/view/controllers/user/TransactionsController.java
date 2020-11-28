@@ -1,4 +1,4 @@
-package com.example.onlinebankingsystem.web.view.controllers.usercontroler;
+package com.example.onlinebankingsystem.web.view.controllers.user;
 
 import com.example.onlinebankingsystem.services.interfaces.BankAccountService;
 import com.example.onlinebankingsystem.services.interfaces.CostService;
