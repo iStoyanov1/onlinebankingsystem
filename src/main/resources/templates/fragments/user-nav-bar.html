@@ -4,24 +4,31 @@
 <div class="container">
     <div class="row justify-content-md-center">
         <nav class="navbar navbar-expand-md navbar-light bg-light"
-             style="border-bottom-left-radius: 30px; border:solid 2px; border-color: #e3f2fd;border-bottom-right-radius: 30px">
+             style="border:solid 2px; border-color: #e3f2fd; ">
             <a class="navbar-brand" th:href="@{/user/profile}">Профил</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-fill w-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/user/bills}">
-                            Сметки <span class="sr-only">(current)</span></a>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="billsDropdown" arole="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Битови сметки</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" th:href="@{/user/bills/payment}">
+                                 Плащане</a>
+                            <a class="dropdown-item" th:href="@{/user/bills/references}">
+                                Справки</a>
+                        </div>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">
                             Карти</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/user/profile/transfer}">
+                        <a class="nav-link" th:href="@{/user/transfer}">
                             Преводи <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/user/profile/transactions}">
+                        <a class="nav-link" th:href="@{/user/transactions}">
                             Транзакции <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown active">
@@ -31,23 +38,20 @@
                             Редактиране на профил
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/user/profile/edit-password}">
+                            <a class="dropdown-item" th:href="@{/user/edit/password}">
                                 <img src="https://icon-library.com/images/password-icon-png/password-icon-png-22.jpg"
                                      height="10"
                                      width="10"> Парола</a>
-                            <a class="dropdown-item" th:href="@{/user/profile/edit-email}">
+                            <a class="dropdown-item" th:href="@{/user/edit/email}">
                                 <img src="https://icon-library.com/images/email-icon-download/email-icon-download-8.jpg"
                                      height="10"
                                      width="10"> Имейл</a>
-                            <a class="dropdown-item" th:href="@{/user/profile/edit-phone}">
+                            <a class="dropdown-item" th:href="@{/user/edit/phone}">
                                 <img src="https://purepng.com/public/uploads/large/purepng.com-phone-icon-android-kitkatsymbolsiconsapp-iconsandroid-kitkatandroid-44-721522597658ivuve.png"
                                      height="10"
                                      width="10"> Телефон</a>
                         </div>
                 </ul>
-                <form action="/logout?login" method="post">
-                    <button class="btn btn-danger logout-button" style="border-radius: 50px">Изход</button>
-                </form>
             </div>
         </nav>
     </div>

@@ -10,10 +10,15 @@ import com.example.onlinebankingsystem.services.interfaces.BankAccountService;
 import com.example.onlinebankingsystem.services.interfaces.CostService;
 import com.example.onlinebankingsystem.services.interfaces.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,7 +51,7 @@ public class CostServiceImpl implements CostService {
     }
 
     @Override
-    public List<CostServiceModel> userAllCosts(String username) {
+    public List<CostServiceModel> userAllCosts(String username, Pageable pageable) {
         /*UserServiceModel user = this.userService.findUserByUsername(username);
 
         BankAccountServiceModel bankAccount = this.bankAccountService.findBankAccountByUser(user.getUsername());*/
@@ -86,5 +91,28 @@ public class CostServiceImpl implements CostService {
         userCost.setDetails(costDetails);
 
         this.costRepository.saveAndFlush(this.modelMapper.map(cost, Cost.class));
+    }
+
+    @Override
+    public Page<CostServiceModel> findCostsByPage(Pageable pageable, String username) {
+        int pageSize = pageable.getPageSize();
+        int currentPage = pageable.getPageNumber();
+        int startItem = currentPage * pageSize;
+        List<CostServiceModel> list;
+
+        if (this.costRepository.findAllBySender_User_UsernameOrderByDateDesc(username).size() < startItem) {
+            list = Collections.emptyList();
+        } else {
+            int toIndex = Math.min(startItem + pageSize, this.costRepository.findAllBySender_User_UsernameOrderByDateDesc(username).size());
+            list = this.costRepository.findAll()
+                    .stream()
+                    .map(m -> this.modelMapper.map(m, CostServiceModel.class))
+                    .collect(Collectors.toList());
+        }
+
+        Page<CostServiceModel> costPage
+                = new PageImpl<CostServiceModel>(list, PageRequest.of(currentPage, pageSize), this.costRepository.findAll().size());
+
+        return costPage;
     }
 }

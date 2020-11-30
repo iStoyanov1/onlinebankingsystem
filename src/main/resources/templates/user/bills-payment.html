@@ -14,10 +14,10 @@
             <th:block th:include="~{/fragments/user-nav-bar}"></th:block>
         </div>
         <div class="container mt-4 mb-4 justify-content-center">
-            <form id="filter-transactions" th:action="@{/user/bills}" th:method="post">
+            <form id="filter-transactions" th:action="@{/user/bills}" th:method="post" th:object="${model}">
                 <div style="margin-left: 10%" class="mt-4 mb-4">
                     <img width="30px" height="30px"
-                         src="https://cdn0.iconfinder.com/data/icons/crime-and-security-3-6/65/147-512.png"> <span
+                         src="https://cdn2.iconfinder.com/data/icons/vehicle-insurance/256/Medical_Payments_Coverage-512.png"> <span
                         style="font-size: x-large">Плащане на сметки</span>
                 </div>
                 <div class="row justify-content-center">
@@ -29,8 +29,8 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <select class="form-control" id="bill-type" onchange="selectSupplier()" name="type">
-                                            <option selected disabled th:value="choose"
-                                                    th:text="'Изберете'"/>
+                                            <option th:value="choose"
+                                                    th:text="'Изберете'" readonly/>
                                             <option th:each="billType : ${T(com.example.onlinebankingsystem.data.enums.BillType).values()}"
                                                     th:value="${billType}" th:text="${billType}">
                                             </option>
@@ -43,11 +43,15 @@
                             <div class="row mt-4">
                                 <div class="col-sm-2"><span>Доставчик:</span></div>
                                 <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <select class="form-control" id="supplier" onchange="selectSupplier()" name="supplier">
-                                            <option selected disabled th:value="choose"
+                                    <div class="form-group" th:classappend="${#fields.hasErrors('supplier')}? 'text-danger'">
+                                        <select class="form-control" th:field="*{supplier}" id="supplier"  name="supplier">
+                                            <option disabled  th:value="choose"
                                                     th:text="'Изберете'"/>
                                         </select>
+                                        <small
+                                                th:each="error : ${#fields.errors('supplier')}">
+                                            <span th:text="${error}"/>
+                                            <br>
                                     </div>
                                 </div>
                             </div>
@@ -55,42 +59,51 @@
                                 <div class="row mt-4">
                                     <div class="col-sm-2"><span>Сметка:</span></div>
                                     <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <select class="form-control" id="account" name="account">
-                                                <option selected disabled th:value="choose"
-                                                        th:text="'Изберете сметка'"/>
+                                        <div class="form-group" th:classappend="${#fields.hasErrors('account')}? 'text-danger'">
+                                            <select class="form-control" th:field="*{account}" id="account" name="account">
+                                                <option th:value="choose"
+                                                        th:text="'Изберете сметка'" readonly/>
                                                 <option th:value="${user.getAccountNumber()}"
                                                         th:text="${user.getUser().getFullName()} + ' ( ' + ${user.getAccountNumber()} + ' - '+ ${user.getBalance()} + ' '+ ${user.getCurrency()} +' )'"/>
                                             </select>
+                                            <small
+                                                    th:each="error : ${#fields.errors('account')}">
+                                                <span th:text="${error}"/>
+                                                <br>
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" th:classappend="${#fields.hasErrors('clientNumber')}">
                                     <div class="row mt-4">
                                         <div class="col-sm-2"><span>Клиентски номер:</span></div>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control text-center"
+                                            <input type="number" th:field="*{clientNumber}" class="form-control text-center"
                                                    id="clientNumber"
                                                    name="clientNumber">
+                                            <small
+                                                    th:each="error : ${#fields.errors('clientNumber')}">
+                                                <span th:text="${error}"/>
+                                                <br>
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-sm-2"><span>Сума:</span></div>
                                     <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <input type="number" class="form-control" id="quantity" name="quantity">
+                                        <div class="form-group" th:classappend="${#fields.hasErrors('quantity')}? 'text-danger'">
+                                            <input type="number" th:field="*{quantity}" step="0.01" class="form-control" id="quantity" name="quantity">
+                                            <small
+                                                    th:each="error : ${#fields.errors('quantity')}">
+                                                <span th:text="${error}"/>
+                                                <br>
+                                            </small>
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <input type="text" class="form-control" value="BGN" style="width: 50%;">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <h6 style="color: green" th:text="${successMessage}"></h6><h6
-                                                style="color: red" th:text="${failedMessage}"></h6>
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
@@ -104,7 +117,8 @@
                                     <div class="row mt-4 justify-content-md-center">
                                         <div class="col-sm-6 ">
                                         <span style="color: green; text-align: center"
-                                              th:text="${successMessage}"></span>
+                                              th:text="${successMessage}"></span><span style="color: red; text-align: center"
+                                                                                       th:text="${failedMessage}"></span>
                                         </div>
                                     </div>
                                 </div>

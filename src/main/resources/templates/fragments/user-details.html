@@ -1,34 +1,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-        <table class="table table-bordered mt-4 table-responsive-lg">
-            <tbody>
-            <tr>
-                <td style="border-color: dodgerblue">
-                    <img src="https://www.searchpng.com/wp-content/uploads/2019/02/Profile-PNG-Icon.png"
-                         height="25"
-                         width="25"><span
-                        th:text="'   Потребител: ' + ${user.getUser().getFullName()}"></span>
-                    <hr>
-                    <img src="https://icons.iconarchive.com/icons/dtafalonso/android-l/256/Gmail-icon.png"
-                         height="25"
-                         width="25">
-                    <span class="text-left"
-                          th:text="'   Имейл: ' + ${user.getUser().getEmail()}"></span>
-                </td>
-                </th>
-            </tr>
-            </tbody>
-        </table>
-        <table class="table table-bordered">
-            <tbody>
-            <tr>
-                <th scope="row" style="text-align: left; border-color: dodgerblue">Сметка:</th>
-                <td style="border-color: dodgerblue"><h6 class="text-right" th:text="${user.getAccountNumber()}"></h6></td>
-            </tr>
-            <tr>
-                <th scope="row" style="text-align: left; border-color: dodgerblue">Наличност:</th>
-                <td style="border-color: dodgerblue"><h6 class="text-right" th:text="${user.getBalance()}+' ' + ${user.getCurrency()}"></h6>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+<div class="table-responsive-lg">
+    <table class="table table-bordered mt-4">
+        <tbody>
+        <tr>
+            <td style="border-color: dodgerblue">
+                <img src="https://www.searchpng.com/wp-content/uploads/2019/02/Profile-PNG-Icon.png"
+                     height="25"
+                     width="25"><span
+                    th:text="'   Потребител: ' + ${user.getUser().getFullName()}"></span>
+                <hr>
+                <img src="https://icons.iconarchive.com/icons/dtafalonso/android-l/256/Gmail-icon.png"
+                     height="25"
+                     width="25">
+                <span class="text-left"
+                      th:text="'   Имейл: ' + ${user.getUser().getEmail()}"></span>
+            </td>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="table-responsive-lg">
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <th scope="row" style="text-align: left; border-color: dodgerblue">Сметка:</th>
+            <td style="border-color: dodgerblue"><h6 class="text-right" th:text="${user.getAccountNumber()}"></h6></td>
+        </tr>
+        <tr>
+            <th scope="row" style="text-align: left; border-color: dodgerblue">Наличност:</th>
+            <td style="border-color: dodgerblue"><h6 class="text-right"
+                                                     th:text="${user.getBalance()}+' ' + ${user.getCurrency()}"></h6>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

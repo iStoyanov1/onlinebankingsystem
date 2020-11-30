@@ -21,7 +21,7 @@
                             <img height="218" width=300px style="margin-right: auto; margin-left: auto; display: block" src="https://uxwing.com/wp-content/themes/uxwing/download/16-business-and-finance/bank-transfer.png"/>
                             <p style="text-align: center"> Превод в лева по сметка в друга банка в България.</p>
 
-                            <a style="text-decoration: none" class="individual-link" th:href="@{/user/profile/transfer/outside/{id}(id = ${user.getId()})}">Създай превод</a>
+                            <a style="text-decoration: none" class="individual-link" th:href="@{/user/transfer/outside/{id}(id = ${user.getId()})}">Създай превод</a>
 
                         </div>
                         <div class="col-sm-2">
@@ -32,7 +32,7 @@
                             <img class="img-icon" src="https://static.thenounproject.com/png/1414626-200.png">
                             <p style="text-align: center">Преводи по сметка на друг клиент на БТБ</p>
 
-                            <a style="text-decoration: none" class="individual-link" th:href="@{/user/profile/transfer/payment/{id}(id = ${user.getId()})}">Създай превод</a>
+                            <a style="text-decoration: none" class="individual-link" th:href="@{/user/transfer/payment/{id}(id = ${user.getId()})}">Създай превод</a>
 
                         </div>
                     </div>

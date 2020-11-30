@@ -31,25 +31,10 @@ public class TransactionsController {
     }
 
 
-    @GetMapping("/profile/transactions")
+    @GetMapping("/transactions")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView transactionView(ModelAndView modelAndView, Principal principal) {
 
-       /* List<CostResponseModel> costs = this.costService.userAllCosts(principal.getName())
-                .stream().map(cost -> this.modelMapper.map(cost, CostResponseModel.class))
-                .collect(Collectors.toList());
-        String userEmail = null;
-        String userFullName = null;
-        String userAcc = null;
-        for (CostResponseModel cost : costs) {
-            userEmail = cost.getSender().getUser().getEmail();
-            userFullName = cost.getSender().getUser().getFullName();
-            userAcc = cost.getSender().getAccountNumber();
-        }
-        modelAndView.addObject("userEmail", userEmail);
-        modelAndView.addObject("userFullName", userFullName);
-        modelAndView.addObject("userAcc", userAcc);
-        modelAndView.addObject("userCosts", costs);*/
 
         BankAccountViewModel bankAccountViewModel = this.modelMapper.map(this.bankAccountService.findBankAccountByUser(principal.getName()),
                 BankAccountViewModel.class);

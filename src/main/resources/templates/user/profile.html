@@ -19,66 +19,60 @@
                     </div>
 
                 </div>
-                <div class="col">
+                <div class="col-sm-2">
                     <input type="hidden">
                 </div>
                 <div class="col-sm-6">
-                    <div class="container justify-content-center">
+                    <div class="container">
                         <h6 class="text-center mt-4">
                             <img src="https://www.pngrepo.com/png/181917/180/sort-arrows.png"
                                  height="25"
                                  width="25"> Последни движения по сметка:</h6>
                         <hr>
-                        <div class="row mt-4 justify-content-center">
+                        <div class="row mt-4">
                             <div class="col-sm-12 mr-4">
                                 <h6 class="text-center">Приходи</h6>
-                                <table class="table mt-4 table-bordered">
-                                    <tbody>
-                                    <thead>
-                                    <tr>
-                                        <th style="border-color: dodgerblue" scope="col">Дата</th>
-                                        <th style="border-color: dodgerblue" scope="col">Подател</th>
-                                        <th style="border-color: dodgerblue" scope="col">Сума</th>
-                                        <th style="border-color: dodgerblue" scope="col">Получател - Сметка</th>
-                                        <th style="border-color: dodgerblue" scope="col">Подател - Сметка</th>
-                                    </tr>
-                                    </thead>
-                                    <th:block th:each="income : ${userIncomes}">
+                                    <table class="table table-striped table-light">
+                                        <thead>
                                         <tr>
-                                            <td style="border-color: dodgerblue" th:text="${income.getDate()}"></td>
-                                            <td style="border-color: dodgerblue" th:text="${income.getDetails()}"></td>
-                                            <td style="border-color: dodgerblue; color: green"
-                                                th:text="${income.getQuantity()}"></td>
-                                            <td style="border-color: dodgerblue"
-                                                th:text="${income.getRecipient().getAccountNumber()}"></td>
-                                            <td style="border-color: dodgerblue" th:text="${income.getSender()}"></td>
+                                            <th scope="col">Дата</th>
+                                            <th scope="col">Подател</th>
+                                            <th scope="col">Сума</th>
+                                            <th scope="col">Получател - Сметка</th>
+                                            <th scope="col">Подател - Сметка</th>
                                         </tr>
-                                    </th:block>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-sm-12 mr-4">
+                                        </thead>
+                                        <tbody>
+                                        <th:block th:each="income : ${userIncomes}">
+                                            <tr>
+                                                <td th:text="${income.getDate()}"></td>
+                                                <td th:text="${income.getDetails()}"></td>
+                                                <td style="color: green" th:text="${income.getQuantity()}"></td>
+                                                <td th:text="${income.getRecipient().getAccountNumber()}"></td>
+                                                <td th:text="${income.getSender()}"></td>
+                                            </tr>
+                                        </th:block>
+                                        </tbody>
+                                    </table>
                                 <h6 class="text-center">Разходи</h6>
-                                <table class="table mt-4 table-bordered">
+                                <table class="table table-striped table-light mb-4">
                                     <thead>
                                     <tr>
-                                        <th style="border-color: dodgerblue" scope="col">Дата</th>
-                                        <th style="border-color: dodgerblue" scope="col">Подател</th>
-                                        <th style="border-color: dodgerblue" scope="col">Сума</th>
-                                        <th style="border-color: dodgerblue" scope="col">Получател - Сметка</th>
-                                        <th style="border-color: dodgerblue" scope="col">Подател - Сметка</th>
+                                        <th scope="col">Дата</th>
+                                        <th scope="col">Подател</th>
+                                        <th scope="col">Сума</th>
+                                        <th scope="col">Получател - Сметка</th>
+                                        <th scope="col">Подател - Сметка</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <th:block th:each="cost : ${userCosts}">
                                         <tr>
-                                            <td style="border-color: dodgerblue" th:text="${cost.getDate()}"></td>
-                                            <td style="border-color: dodgerblue" th:text="${cost.getDetails()}"></td>
-                                            <td style="border-color: dodgerblue; color: red"
-                                                th:text="${cost.getQuantity()}"></td>
-                                            <td style="border-color: dodgerblue" th:text="${cost.getRecipient()}"></td>
-                                            <td style="border-color: dodgerblue"
-                                                th:text="${cost.getSender().getAccountNumber()}"></td>
+                                            <td th:text="${cost.getDate()}"></td>
+                                            <td th:text="${cost.getDetails()}"></td>
+                                            <td style="color: red" th:text="${cost.getQuantity()}"></td>
+                                            <td th:text="${cost.getRecipient()}"></td>
+                                            <td th:text="${cost.getSender().getAccountNumber()}"></td>
                                         </tr>
                                     </th:block>
                                     </tbody>

@@ -12,7 +12,7 @@
         </div>
         <th:block th:include="~{/fragments/user-nav-bar}"></th:block>
         <div class="container">
-            <form th:method="post" th:action="@{/user/profile/transfer/outside/{id}(id = ${user.getId()})}"
+            <form th:method="post" th:action="@{/user/transfer/outside/{id}(id = ${user.getId()})}"
                   th:object="${userTransfer}">
                 <div class="row">
                     <h5 class="mb-4 mt-4"> Превод към потербител на друга банка в България</h5>

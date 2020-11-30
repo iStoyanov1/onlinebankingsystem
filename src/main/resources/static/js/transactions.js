@@ -16,6 +16,9 @@
                                         </tr>
 
                                         * */
+const UrlAll = {
+    items: '/api/all/transaction'
+};
 
 const UrlCosts = {
     items: '/api/transaction/cost'
@@ -23,26 +26,36 @@ const UrlCosts = {
 
 const UrlIncomes = {
     items: '/api/transaction/income'
-}
+};
+
+const allTable = ({date, details, quantity, recipient, sender}) =>
+    ` 
+                     <tr>
+                     <td>${date}</td>
+                      <td>${details}</td>
+                      <td style="color: red">${quantity.toFixed(2)}</td>
+                      <td>${recipient}</td>
+                      <td>${sender.accountNumber}</td>
+                  </tr>`
 
 const costTable = ({date, details, quantity, recipient, sender}) =>
     ` 
                      <tr>
-                     <td style="border-color: dodgerblue">${date}</td>
-                      <td style="border-color: dodgerblue">${details}</td>
-                      <td style="border-color: dodgerblue; color: red">${quantity.toFixed(2)}</td>
-                      <td style="border-color: dodgerblue">${recipient}</td>
-                      <td style="border-color: dodgerblue">${sender.accountNumber}</td>
+                     <td>${date}</td>
+                      <td>${details}</td>
+                      <td style="color: red">${quantity.toFixed(2)}</td>
+                      <td>${recipient}</td>
+                      <td>${sender.accountNumber}</td>
                   </tr>`
 
 const incomeTable = ({date, details, quantity, sender, recipient}) =>
     ` 
                      <tr>
-                     <td style="border-color: dodgerblue">${date}</td>
-                      <td style="border-color: dodgerblue">${details}</td>
-                      <td style="border-color: dodgerblue; color: green">${quantity.toFixed(2)}</td>
-                      <td style="border-color: dodgerblue">${recipient.accountNumber}</td>
-                      <td style="border-color: dodgerblue">${sender}</td>
+                     <td>${date}</td>
+                      <td>${details}</td>
+                      <td style="color: green">${quantity.toFixed(2)}</td>
+                      <td>${recipient.accountNumber}</td>
+                      <td>${sender}</td>
                   </tr>`
 
 
@@ -63,6 +76,21 @@ function showCosts() {
         });
 }
 
+function showAll() {
+    fetch(UrlAll.items)
+        .then(response => response.json())
+        .then(items => {
+            let result = '';
+            items.forEach(item => {
+                const allTableTransaction = allTable(item);
+                result += allTableTransaction;
+
+            });
+            document.getElementById('transaction-table')
+                .innerHTML = result;
+
+        });
+}
 
 
 function costsBetweenDates() {
@@ -117,6 +145,8 @@ function displayTable() {
         showCosts();
     } else if (option === 'incomes') {
         showIncomes();
+    }else if (option === 'all'){
+        showAll();
     }
 }
 

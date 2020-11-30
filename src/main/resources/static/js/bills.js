@@ -34,17 +34,17 @@ function selectSupplier(){
         $.each(heatingSystemSupplier, function(i, p) {
             $('#supplier').append($('<option></option>').val(p).html(p));
         });
-    }else if (selectOption === "Изберете"){
+    }else if (selectOption === "choose"){
         $("#supplier").empty();
-        let option = document.createElement("option")
+       /* let option = document.createElement("option")
         option.text = "Изберете";
         supplierSelect.add(option);
-        $('#supplier').prop('disabled', true);
+        $('#supplier').prop('disabled', true);*/
     }
 
 }
 
-let internetSupplier = ['Макс Телеком', 'Варна НЕТ', 'Макс Телеком', 'НЕТ-СЪРФ', 'ФАЙБЪР 1 ООД', 'НЕТ 1' ];
+let internetSupplier = ['Макс Телеком', 'Варна НЕТ', 'НЕТ-СЪРФ', 'ФАЙБЪР 1 ООД', 'НЕТ 1' ];
 let educationSupplier = ['ТУ-ВАРНА'];
 let tvSupplier = ['Булсатком', 'Нет БГ', 'А1 Телевизия Близу', 'Видеосат 21', 'НЕТ Системи', 'НЕТ 1' ];
 let phoneSupplier = ['Виваком', 'Теленор', 'А1', 'Новаком'];

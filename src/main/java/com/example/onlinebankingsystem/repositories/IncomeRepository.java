@@ -17,4 +17,5 @@ public interface IncomeRepository extends JpaRepository<Income, Integer> {
 
 
 
+
 }

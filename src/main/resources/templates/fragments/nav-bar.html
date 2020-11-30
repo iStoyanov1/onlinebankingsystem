@@ -20,14 +20,14 @@
                 <a class="nav-link" style="color: black" th:href="@{/about}">За нас</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" style="color: black" th:href="@{/contacts}">Контакти</a>
+               <a class="nav-link" style="color: black" th:href="@{/contacts}">Контакти</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class=" form-control mr-sm-2 transparent-input " style="border-radius: 50px" type="search"
-                   placeholder="Търси.." aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="border-radius: 50px">Търсене</button>
-        </form>
+        <th:block sec:authorize="hasRole('ROLE_USER')">
+            <form action="/logout?login" method="post">
+               <button class="btn btn-green-link logout-button"> <img src="https://cdn0.iconfinder.com/data/icons/thin-line-color-2/21/05_1-512.png" width="20px" height="20px"> Изход</button>
+            </form>
+        </th:block>
     </div>
 </nav>
 <!-- <li class="nav-item dropdown">

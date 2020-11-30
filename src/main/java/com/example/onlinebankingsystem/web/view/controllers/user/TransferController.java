@@ -40,7 +40,7 @@ public class TransferController extends BaseController {
         this.costService = costService;
     }
 
-    @GetMapping("/profile/transfer")
+    @GetMapping("/transfer")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView transferView(ModelAndView modelAndView, Principal principal){
 
@@ -52,7 +52,7 @@ public class TransferController extends BaseController {
 
         return super.view("/user/transfer/money-transfer", modelAndView);
     }
-    @GetMapping("/profile/transfer/outside/{id}")
+    @GetMapping("/transfer/outside/{id}")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView paymentOutsideView(@ModelAttribute(name = "userTransfer") UserTransferBindingModel userTransfer, @PathVariable int id, ModelAndView modelAndView){
 
@@ -63,7 +63,7 @@ public class TransferController extends BaseController {
         return super.view("/user/transfer/transfer-outside", modelAndView);
     }
 
-    @PostMapping("/profile/transfer/outside/{id}")
+    @PostMapping("/transfer/outside/{id}")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView paymentOutside(@Valid @ModelAttribute(name = "userTransfer") UserTransferBindingModel userTransfer,
                                        BindingResult bindingResult, ModelAndView modelAndView,

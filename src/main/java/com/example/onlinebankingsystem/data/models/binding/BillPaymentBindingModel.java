@@ -2,14 +2,16 @@ package com.example.onlinebankingsystem.data.models.binding;
 
 import com.example.onlinebankingsystem.data.entities.BankAccount;
 import com.example.onlinebankingsystem.data.enums.BillType;
+import com.example.onlinebankingsystem.data.models.services.base.BaseServiceModel;
 
+import javax.validation.constraints.*;
 import java.sql.Date;
 
 public class BillPaymentBindingModel {
 
     private BillType type;
     private String supplier;
-    private double quantity;
+    private Double quantity;
     private String clientNumber;
     private String account;
 
@@ -24,6 +26,7 @@ public class BillPaymentBindingModel {
         this.type = type;
     }
 
+    @NotNull(message = "Моля изберете доставчик")
     public String getSupplier() {
         return supplier;
     }
@@ -32,6 +35,7 @@ public class BillPaymentBindingModel {
         this.supplier = supplier;
     }
 
+    @Pattern(regexp = "^[0-9]{8,20}", message = "Клиентският номер трябва да съдържа между 8 и 20 символа")
     public String getClientNumber() {
         return clientNumber;
     }
@@ -40,14 +44,16 @@ public class BillPaymentBindingModel {
         this.clientNumber = clientNumber;
     }
 
-    public double getQuantity() {
+    @NotNull(message = "Моля въведете дължима сума")
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 
+    @NotNull(message = "Моля изберете сметка")
     public String getAccount() {
         return account;
     }

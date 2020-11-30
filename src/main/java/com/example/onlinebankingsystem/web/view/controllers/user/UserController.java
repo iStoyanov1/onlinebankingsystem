@@ -65,7 +65,7 @@ public class UserController extends BaseController {
     }
 
 
-    @GetMapping("/profile/edit-password")
+    @GetMapping("/edit/password")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView editPassword(Principal principal, ModelAndView modelAndView) {
         UserServiceModel user = this.userService.findUserByUsername(principal.getName());
@@ -77,7 +77,7 @@ public class UserController extends BaseController {
         return super.view("/user/edit/edit-password", modelAndView);
     }
 
-    @PostMapping("/profile/edit-password")
+    @PostMapping("/edit/password")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView editPasswordConfirm(@Valid @ModelAttribute("model") UserEditPasswordBindingModel model,
                                             BindingResult bindingResult,
@@ -107,18 +107,19 @@ public class UserController extends BaseController {
     }
 
 
-    @GetMapping("/profile/edit-email")
+    @GetMapping("/edit/email")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView editEmail(Principal principal, ModelAndView modelAndView) {
 
 
-        UserEditEmailBindingModel user = this.modelMapper.map(this.userService.findUserByUsername(principal.getName()), UserEditEmailBindingModel.class);
+        UserEditEmailBindingModel user = this.modelMapper
+                .map(this.userService.findUserByUsername(principal.getName()), UserEditEmailBindingModel.class);
         //UserServiceModel user = this.userService.findUserByUsername(principal.getName());
         modelAndView.addObject("model", user);
         return super.view("/user/edit/edit-email", modelAndView);
     }
 
-    @PostMapping("/profile/edit-email")
+    @PostMapping("/edit/email")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView editEmailConfirm(@Valid @ModelAttribute("model") UserEditEmailBindingModel model, BindingResult bindingResult
                                                                 , Principal principal, ModelAndView modelAndView) {
@@ -140,7 +141,7 @@ public class UserController extends BaseController {
     }
 
 
-    @GetMapping("/profile/edit-phone")
+    @GetMapping("/edit/phone")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView editPhone(Principal principal, ModelAndView modelAndView) {
         UserServiceModel user = this.userService.findUserByUsername(principal.getName());
@@ -148,7 +149,7 @@ public class UserController extends BaseController {
         return super.view("/user/edit/edit-phone", modelAndView);
     }
 
-    @PostMapping("/profile/edit-phone")
+    @PostMapping("/edit/phone")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView editPhoneConfirm(@Valid @ModelAttribute("model")UserEditPhoneBindingModel model,
                                          BindingResult bindingResult, Principal principal, ModelAndView modelAndView) {
