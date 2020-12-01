@@ -42,9 +42,15 @@ public class BankAccountServiceImpl implements BankAccountService {
     }
 
     @Override
-    public void reduceBalance(double amount, BankAccountServiceModel bankAccountServiceModel) {
+    public void reduceBalance(Double amount, BankAccountServiceModel bankAccountServiceModel) {
         BankAccount bankAccount = this.bankAccountRepository.findBankAccountByAccountNumber(bankAccountServiceModel.getAccountNumber());
         bankAccount.setBalance(bankAccount.getBalance() - amount);
 
+    }
+
+    @Override
+    public void incomeBalance(Double amount, BankAccountServiceModel bankAccountServiceModel) {
+        BankAccount bankAccount = this.bankAccountRepository.findBankAccountByAccountNumber(bankAccountServiceModel.getAccountNumber());
+        bankAccount.setBalance(bankAccount.getBalance() + amount);
     }
 }

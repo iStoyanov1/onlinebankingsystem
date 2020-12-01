@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <main>
+        <div>
+            <th:block th:include="~{/fragments/nav-bar}"></th:block>
+        </div>
+        <th:block th:include="~{/fragments/user-nav-bar}"></th:block>
+        <div class="container">
+            <form th:method="post" th:action="@{/user/transfer/bank/{id}(id = ${user.getId()})}"
+                  th:object="${userTransfer}">
+                <div class="row">
+                    <h5 class="mb-4 mt-4"> Превод към потербител в БТБ</h5>
+                    <div class="col-sm-12" style="background-color: #f2f2f2; border-radius: 30px">
+                        <div class="form-group" th:classappend="${#fields.hasErrors('sender')} ">
+                            <div class="row mt-4">
+                                <div class="col-sm-2"><span>От сметка:</span></div>
+                                <div class="col-sm-8">
+                                    <select class="form-control"
+                                            id="sender" name="sender" th:field="*{sender}">
+                                        <option selected disabled th:value="choose" th:text="'Изберете сметка'"/>
+                                        <option th:value="${user.getAccountNumber()}"
+                                                th:text="${user.getUser().getFullName()} + ' ( ' + ${user.getAccountNumber()} + ' - '+ ${user.getBalance()} + ' '+ ${user.getCurrency()} +' )'"/>
+                                    </select>
+                                    <small
+                                            th:each="error : ${#fields.errors('sender')}">
+                                        <span th:text="${error}"/>
+                                        <br>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" >
+                            <div class="row mt-4">
+                                <div class="col-sm-2"><span>Име на получател:</span></div>
+                                <div class="col-sm-8">
+                                    <div class="form-group" th:classappend="${#fields.hasErrors('recipientName')}? 'text-danger' ">
+                                        <input th:field="*{recipientName}" type="text" class="form-control"
+                                               id="recipientName" name="recipientName">
+                                        <small
+                                                th:each="error : ${#fields.errors('recipientName')}">
+                                            <span th:text="${error}"/>
+                                            <br>
+                                        </small>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-sm-2"><span>IBAN:</span></div>
+                                <div class="col-sm-8">
+                                    <div class="form-group"
+                                         th:classappend="${#fields.hasErrors('recipient')}? 'text-danger' ">
+                                        <input type="text" class="form-control" id="recipient" name="recipient"
+                                               th:field="*{recipient}">
+                                        <small
+                                                th:each="error : ${#fields.errors('recipient')}">
+                                            <span th:text="${error}"/>
+                                            <br>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-sm-2"><span>Сума:</span></div>
+                                <div class="col-sm-2">
+                                    <div class="form-group"
+                                         th:classappend="${#fields.hasErrors('quantity')}? 'text-danger'">
+                                        <input type="number" class="form-control" id="quantity" name="quantity">
+                                        <small
+                                                th:each="error : ${#fields.errors('quantity')}">
+                                            <span th:text="${error}"/>
+                                            <br>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" value="BGN" style="width: 50%;">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <h6 style="color: green" th:text="${successMessage}"></h6><h6 style="color: red" th:text="${failedMessage}"></h6><h6 style="color: red" th:text="${notFoundMessage}"></h6>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success" style="width: 100%">Преведи
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer style="margin-top: 10%">
+        <th:block th:include="~{/fragments/footer}"></th:block>
+    </footer>
+    <!--    <script src="/static/js/transactions.js"></script>-->
+    <script th:src="@{/js/transactions.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

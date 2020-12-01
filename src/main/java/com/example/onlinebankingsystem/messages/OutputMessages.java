@@ -20,4 +20,6 @@ public class OutputMessages {
 
     public static final String FAILED_BILL_PAYMENT = "Недостатъчен баланс по сметка";
 
+    public static final String USER_NOT_FOUND = "Невалидни име/банкова сметка";
+
 }

@@ -1,5 +1,6 @@
 package com.example.onlinebankingsystem.services.interfaces;
 
+import com.example.onlinebankingsystem.data.models.services.BankAccountServiceModel;
 import com.example.onlinebankingsystem.data.models.services.CostServiceModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +16,7 @@ public interface CostService {
 
     List<CostServiceModel> userCostsBetweenDates(String username, Date from, Date to);
 
-    void setCost(CostServiceModel cost, String costDetails);
+    void setCost(CostServiceModel cost, String costDetails, BankAccountServiceModel bankAccountServiceModel);
 
     Page<CostServiceModel> findCostsByPage(Pageable pageable, String username);
 

@@ -80,17 +80,17 @@ public class CostServiceImpl implements CostService {
         this.bankAccountService.reduceMoney(cost.getQuantity(), userTransfer.getSender());*/
 
     @Override
-    public void setCost(CostServiceModel cost, String costDetails) {
+    public void setCost(CostServiceModel cost, String costDetails, BankAccountServiceModel bankAccountServiceModel) {
 
         Cost userCost = this.modelMapper.map(cost, Cost.class);
 
 
 
         userCost.setDate(Date.valueOf(LocalDate.now()));
-        userCost.setSender(this.bankAccountRepository.findBankAccountByAccountNumber(cost.getSender().getAccountNumber()));
+        userCost.setSender(this.bankAccountRepository.findBankAccountByAccountNumber(bankAccountServiceModel.getAccountNumber()));
         userCost.setDetails(costDetails);
 
-        this.costRepository.saveAndFlush(this.modelMapper.map(cost, Cost.class));
+        this.costRepository.saveAndFlush(userCost);
     }
 
     @Override

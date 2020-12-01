@@ -94,4 +94,9 @@ public class UserServiceImpl implements UserService {
 
         return this.modelMapper.map(this.userRepository.findUserById(id), UserServiceModel.class);
     }
+
+    @Override
+    public UserServiceModel findUserByFullName(String fullName) {
+        return this.modelMapper.map(this.userRepository.findUserByFullName(fullName), UserServiceModel.class);
+    }
 }

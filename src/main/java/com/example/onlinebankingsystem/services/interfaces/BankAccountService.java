@@ -10,5 +10,7 @@ public interface BankAccountService {
 
     BankAccountServiceModel findBankAccByAccNumber(String acc);
 
-    void reduceBalance(double amount, BankAccountServiceModel bankAccountServiceModel);
+    void reduceBalance(Double amount, BankAccountServiceModel bankAccountServiceModel);
+
+    void incomeBalance(Double amount, BankAccountServiceModel bankAccountServiceModel);
 }
